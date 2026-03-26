@@ -15,7 +15,16 @@ import Image from "next/image";
 import { CgHome } from "react-icons/cg";
 import { listalivros } from "../data/livros";
 
-export default function Header({ titulo }) {
+interface headerprop {
+  titulo: string;
+  titulo2:string;
+  image1: string;
+  image2: string;
+  image3: string;
+  image4: string;
+}
+
+export default function Header({ titulo, titulo2, image1, image2, image3,image4  }: headerprop) {
   const rota = usePathname();
   const paginalivros = listalivros.filter((livro) =>
     livro.categoria.includes(rota),
@@ -23,8 +32,8 @@ export default function Header({ titulo }) {
 
   return (
     <>
-      <div className="grid grid-cols-13 h-screen">
-        <aside className="col-span-1 bg-olive-200 flex flex-col justify-between">
+      <div className="grid grid-cols-[100px_1fr] h-screen w-screen overflow-hidden">
+        <aside className=" bg-olive-200 flex flex-col ">
           <div className="flex justify-center">
             <a href="/home">
               <Image
@@ -36,7 +45,7 @@ export default function Header({ titulo }) {
               />
             </a>
           </div>
-          <nav className="flex flex-col gap-4 p-8">
+          <nav className="flex flex-col gap-5 p-10 flex-none items-center justify-center mt-10">
             <li
               className={
                 rota === "/home"
@@ -101,9 +110,9 @@ export default function Header({ titulo }) {
               }
             ></li>
           </nav>
-          <div className="w-[80] h-[120]"></div>
+          
         </aside>
-        <main className="col-span-12 flex flex-col">
+        <main className="flex flex-col h-full overflow-hidden ">
           <header className="">
             <div className="bg-olive-200 flex p-5 items-center">
               <div
@@ -122,27 +131,31 @@ export default function Header({ titulo }) {
                 />
               </div>
 
-              <div className=" flex-1 flex gap-3 items-center justify-end ">
+              <div className=" flex-1 flex gap-3 items-center justify-end overflow-y-auto">
                 <FaUserCircle size="40px" className=" " />
                 <span>User Name</span>
               </div>
             </div>
           </header>
-          <section className="p-8 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto">
+          <section className="p-8 ">
             <h1 className="text-2xl font-bold">{titulo}</h1>
           </section>
-          <div className="flex gap-15 p-5 object-cover">
-            {paginalivros.map((livro) => (
-              <div key={livro.id}>
-                <Image
-                  src={livro.capa}
-                  alt=""
-                  width={220}
-                  height={300}
-                  priority
-                />
-              </div>
-            ))}
+          <div className="p-5 gap-15 flex " >
+            <div className="p-1 hover:border-blue-300/50 border-2 border-transparent rounded-2xl transition-all">
+              <Image src={image1} alt="" width={220} height={300} className="rounded-[5px]"/>
+            </div>
+              
+              <Image src={image2} alt="" width={220} height={300} className="rounded-[5px]"/>
+              <Image src={image3} alt="" width={220} height={300} className="rounded-[5px]"/>
+          </div>
+          <section>
+            <h1 className="font-bold text-2xl p-8">{titulo2}</h1>
+          </section>
+          <div className="flex gap-15 p-5">
+              <Image src={image3} alt="" width={220} height={300} className="rounded-[5px]"/>
+              <Image src={image4} alt="" width={220} height={300} className="rounded-[5px]"/>
+          </div>
           </div>
         </main>
       </div>
