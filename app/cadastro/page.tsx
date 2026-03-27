@@ -39,7 +39,7 @@ export default function CadastreSe() {
             />
             <input 
             type="email" 
-            name="" 
+            name="email" 
             id="" 
             placeholder="Email"
             className="outline-none border-2 border-olive-300 p-2 rounded focus:ring-4 focus:border-blue-400 focus:ring-blue-200/50"
