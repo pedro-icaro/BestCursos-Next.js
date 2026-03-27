@@ -19,7 +19,7 @@ export default function CadastreSe() {
           <center>
             <FaUser size="40px" />
           </center>
-          <form action="cadastro.php" method="POST" className = "">
+          <form action="./php/cadastro.php" method="POST" className = "">
             <input
               type="text"
               placeholder="Usuario"
