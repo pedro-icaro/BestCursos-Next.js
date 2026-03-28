@@ -11,7 +11,7 @@ export default function Login() {
     router.push("/home");
   }
   return (
-    <>
+    <>  
       <div className="flex justify-center items-center min-h-screen">
         <div
           className=" flex flex-col p-20 rounded-2xl gap-5 shadow-none
@@ -20,27 +20,31 @@ export default function Login() {
           <center>
             <FaUser size="40px" />
           </center>
-          <input
-            type="text"
-            placeholder="Usuario"
-            name="usuario"
-            className="p-2 focus:ring-4 focus:ring-blue-200/50 focus:border-blue-400
-             border-olive-300 border-2 outline-none rounded-[5px]"
-          />
-          <input
-            type="password"
-            name="senha"
-            placeholder="Senha"
-            className="p-2 outline-none border-olive-300 border-2 
-            rounded-[5px] focus:ring-4 focus:border-blue-400
-             focus:ring-blue-200/50"
-          />
-          <button
-            className=" bg-blue-500 p-1 rounded-2xl text-[18px] font-semibold text-white"
-            onClick={home}
-          >
-            Logar
-          </button>
+          <form action="/php/login.php" method="POST" className = "flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Usuario"
+              name="usuario"
+              className="p-2 focus:ring-4 focus:ring-blue-200/50 focus:border-blue-400
+              border-olive-300 border-2 outline-none rounded-[5px]"
+              required
+            />
+            <input
+              type="password"
+              name="senha"
+              placeholder="Senha"
+              className="p-2 outline-none border-olive-300 border-2 
+              rounded-[5px] focus:ring-4 focus:border-blue-400
+              focus:ring-blue-200/50"
+              required
+            />
+            <button
+              className=" bg-blue-500 p-1 rounded-2xl text-[18px] font-semibold text-white"
+              type="submit"
+            >
+              Logar
+            </button>
+          </form> 
           <div className=" md:flex md:gap-1">
           <p className="flex justify-center">Não tem uma conta? </p>
           <Link

@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli("localhost","root","","./bd_bookshare");
+$conn = new mysqli("localhost","root","","bookshare");
 // Checando conexão
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
