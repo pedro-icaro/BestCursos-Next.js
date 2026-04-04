@@ -8,7 +8,7 @@ export default function Login() {
   const router = useRouter();
 
   function home() {
-    router.push("/home");
+    router.push("/header");
   }
   return (
     <>

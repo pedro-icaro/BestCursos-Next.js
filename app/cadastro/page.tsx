@@ -7,7 +7,7 @@ export default function CadastreSe() {
   const rotas = useRouter();
 
   function home() {
-    rotas.push("/home");
+    rotas.push("/header");
   }
   return (
     <>
