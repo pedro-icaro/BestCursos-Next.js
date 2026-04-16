@@ -3,7 +3,7 @@ import Card from "../card/page";
 export default function section() {
   return (
     <>
-      <div className="flex gap-3">
+      <div className="flex gap-4">
         <div className="flex ">
           <Card
             capa="https://i.ytimg.com/vi/epDCjksKMok/hqdefault.jpg"

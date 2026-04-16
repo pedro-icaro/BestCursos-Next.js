@@ -66,7 +66,7 @@ export default function Header() {
                 <HiOutlineInformationCircle size={26}/>
               </Link>
             </li>
-            {/*
+          
             <li
               className={
                 rota === "/vender"
@@ -98,7 +98,7 @@ export default function Header() {
               }
             >
             </li>
-            */}
+            
           </nav>
           
         </aside>
@@ -127,9 +127,9 @@ export default function Header() {
               </div>
             </div>
           </header>
-          <div className="flex-1 overflow-x-auto flex-nowrap">
-            <h1 className="font-bold text-3xl p-5">Mais Relevantes</h1>
-              <Section />
+          <div className="flex-1 overflow-y-auto flex-nowrap p-5">
+            <h1 className="font-bold text-3xl p-3">Mais Relevantes</h1>
+              <Section/>
           </div>
         </main>
       </div>

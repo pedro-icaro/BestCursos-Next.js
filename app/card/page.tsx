@@ -8,7 +8,7 @@ interface propscards{
 export default function card({titulocard,descricao,capa}: propscards){
     return(
         <>
-        <div className="line-clamp-4 ">
+        <div className="line-clamp-4">
             <Image
              alt=""
              src={capa} 
@@ -16,7 +16,7 @@ export default function card({titulocard,descricao,capa}: propscards){
              height={100}
              className="w-full"
              />
-             <h1 className="font-bold">
+             <h1 className="font-bold text-2xl">
                 {titulocard}
              </h1>
              <p>
