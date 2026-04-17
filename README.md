@@ -1,5 +1,5 @@
 # DevPro
-O guia do desenvolvedor iniciante.
+**O guia do desenvolvedor iniciante.**
 
 Aprender a programar não precisa ser confuso ou estressante.Esse projeto nasceu para ser o guia definitivo de quem está começando, reunindo o melhor do conteúdo gratuito da internet em uma interface pensada para o seu progresso. Pare de procurar tutoriais e comece a seguir um plano.
 
