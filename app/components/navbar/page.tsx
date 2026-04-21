@@ -22,7 +22,7 @@ export default function Navbar() {
     <>
       <div className="hidden md:block">
         <a
-          href="/home"
+          href="/components/home"
           className="flex flex-col mt-4 justify-center items-center"
         >
           <FaCode size={40} />
@@ -62,17 +62,17 @@ export default function Navbar() {
           }
         >
           <Link href="/javascriptt">
-            <SiJavascript size={20} />
+            <SiJavascript size={22} />
           </Link>
         </li>
         <li
           className={
-            rota === "/home"
-              ? "bg-olive-300 flex items-center p-3 rounded-full w-[50] mt-[-20] "
+            rota === "/components/home"
+              ? "bg-olive-300 flex items-center p-3 rounded-full w-[50]  "
               : "gap-2 p-1 flex items-center"
           }
         >
-          <Link href="/home">
+          <Link href="/components/home">
             <CgHome size={26} />
           </Link>
         </li>        
