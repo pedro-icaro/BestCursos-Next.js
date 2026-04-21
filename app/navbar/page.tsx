@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import {
+  
   FaCode,
   FaCss3Alt,
   FaHtml5,
   FaReact,
-  FaSearch,
-  FaUserCircle,
+
 } from "react-icons/fa";
 import { CgHome } from "react-icons/cg";
 import { IoLogoFigma } from "react-icons/io5";
@@ -33,35 +33,35 @@ export default function Navbar() {
 
         <li
           className={
-            rota === "/vender"
+            rota === "/html5"
               ? "bg-olive-300 flex items-center p-3 gap-2 w-[50] rounded-full "
               : "flex items-center gap-2 p-1"
           }
         >
-          <Link href="/vender">
+          <Link href="/html5">
             {" "}
             <FaHtml5 size={26} />
           </Link>
         </li>
         <li
           className={
-            rota === "/comprar"
+            rota === "/css3"
               ? "bg-olive-300 flex items-center p-3 gap-2  w-[50] rounded-full "
               : "flex items-center p-1 gap-2"
           }
         >
-          <Link href="/comprar">
+          <Link href="/css3">
             <FaCss3Alt size={26} />
           </Link>
         </li>
         <li
           className={
-            rota === "/comprar"
+            rota === "/javascriptt"
               ? "bg-olive-300 flex items-center p-3 gap-2  w-[50] rounded-full "
               : "flex items-center p-1 gap-2"
           }
         >
-          <Link href="/comprar">
+          <Link href="/javascriptt">
             <SiJavascript size={20} />
           </Link>
         </li>
@@ -78,34 +78,34 @@ export default function Navbar() {
         </li>        
         <li
           className={
-            rota === "/comprar"
+            rota === "/figma"
               ? "bg-olive-300 flex items-center p-3 gap-2  w-[50] rounded-full "
               : "flex items-center p-1 gap-2"
           }
         >
-          <Link href="/comprar">
+          <Link href="/figma">
             <IoLogoFigma size={26} />
           </Link>
         </li>
         <li
           className={
-            rota === "/comprar"
+            rota === "/react"
               ? "bg-olive-300 flex items-center p-3 gap-2  w-[50] rounded-full "
               : "flex items-center p-1 gap-2"
           }
         >
-          <Link href="/comprar">
+          <Link href="/react">
             <FaReact size={26} />
           </Link>
         </li>
         <li
           className={
-            rota === "/comprar"
+            rota === "/apoie-o-projeto"
               ? "bg-olive-300 flex items-center p-3 gap-2  w-[50] rounded-full "
               : "flex items-center p-1 gap-2"
           }
         >
-          <Link href="/comprar">
+          <Link href="/apoie-o-projeto">
             <HiOutlinePresentationChartLine size={28} />
           </Link>
         </li>
