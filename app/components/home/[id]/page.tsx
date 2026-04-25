@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { title } from "process";
+import Headercurso from "../../header-curso/page";
 
 interface Props {
     params: Promise<{id:string}>
@@ -16,7 +17,7 @@ export default async function Detalhescursos({params}: Props){
     const {id} = await params;
     return(
         <>
-        <h1>Detalhe do curso {id} </h1>
+        <Headercurso />
         </>
     )
 }
