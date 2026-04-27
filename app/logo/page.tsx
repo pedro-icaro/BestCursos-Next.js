@@ -4,7 +4,7 @@ export default function Logo() {
   return (
     <div>
       <a
-        href="/home"
+        href="/components/home"
         className="flex flex-col mt-4 justify-center items-center"
       >
         <FaCode size={35} />

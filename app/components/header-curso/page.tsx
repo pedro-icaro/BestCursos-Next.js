@@ -28,8 +28,8 @@ export default function Headercurso() {
         só ganhou mercado no final de 2012 com o surgimento dos grandes
         <br /> navegadores compatíveis.
       </p>
-      <button onClick={vermais} className=" w-25">
-        Ver {b}
+      <button onClick={vermais} className=" w-16 underline flex gap-1">
+        <span>Ver</span>{b} 
       </button>
 
       <div className="flex gap-2 items-center">
