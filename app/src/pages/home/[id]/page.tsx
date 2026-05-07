@@ -50,6 +50,22 @@ export default async function Detalhescursos({ params }: Props) {
                   },
                 ],
               },
+              {
+                cursoId: "123",
+                title: "Inicializando conteúdo",
+                classes: [
+                  {
+                    id: "234",
+                    title:
+                      "Curso de HTML5 - 00 - Site Completo - by Gustavo Guanabara",
+                  },
+                  {
+                    id: "235",
+                    title:
+                      "Curso de HTML5 - 01 - História da Internet - by Gustavo Guanabara",
+                  },
+                ],
+              },
             ]}
           />
         </div>
