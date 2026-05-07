@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
 import Aulas from "./Aulas";
 import { useState } from "react";

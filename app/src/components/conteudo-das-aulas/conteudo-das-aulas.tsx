@@ -7,16 +7,15 @@ interface Grupoaulas {
 export default function ConteudoDasAulas({ classgroups }: Grupoaulas) {
   return (
     <>
-    <ol>
-      {classgroups.map((classgroup) => {
-        return (
-        <Grupodeaulas
-          key={classgroup.title}
-          {...classgroup}
-        />
-      )
-      })}
-    </ol>
+      <ol>
+        {classgroups.map((classgroup) => {
+          return (
+            <li key={classgroup.title}>
+              <Grupodeaulas {...classgroup} />
+            </li>
+          );
+        })}
+      </ol>
     </>
   );
 }

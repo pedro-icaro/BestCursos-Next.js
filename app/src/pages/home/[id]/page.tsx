@@ -1,8 +1,7 @@
-import { Metadata } from "next";
-import { title } from "process";
+
 import Headercurso from "../../../components/header-curso/page";
 import Iniciarcurso from "../../../components/iniciarcurso/page";
-import Grupodeaulas from "../../../components/conteudo-das-aulas/Grupodeaulas";
+
 import ConteudoDasAulas from "@/app/src/components/conteudo-das-aulas/conteudo-das-aulas";
 
 interface Props {
@@ -17,7 +16,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function Detalhescursos({ params }: Props) {
-  const { id } = await params;
+  const {id} = await params;
 
   return (
     <>

@@ -1,7 +1,7 @@
-import Image from "next/image";
+import { Metadata } from "next";
 import Section from "../../components/section/page";
 import Card from "../../components/card/card";
-import { Metadata } from "next";
+
 
 export const metadata: Metadata = {
   title: "Dev-Pro",
