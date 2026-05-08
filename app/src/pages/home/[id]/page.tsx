@@ -20,7 +20,7 @@ export default async function Detalhescursos({ params }: Props) {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row-reverse gap-5 md:gap-5 md:w-auto left-0">
+      <div className="flex flex-col md:flex-row-reverse gap-5 md:gap-20 md:w-auto left-0">
         <div className="flex-1">
           <Iniciarcurso
             title="Curso de HTML5 Completo e GRÁTIS"
@@ -29,7 +29,7 @@ export default async function Detalhescursos({ params }: Props) {
             imagemUrl="https://i.ytimg.com/vi/epDCjksKMok/hqdefault.jpg"
           />
         </div>
-        <div className="flex-1 flex flex-col gap-4">
+        <div className="flex-1 flex flex-col gap-6">
           <Headercurso />
           <ConteudoDasAulas
             classgroups={[
