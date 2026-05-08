@@ -1,4 +1,3 @@
-
 import Headercurso from "../../../components/header-curso/page";
 import Iniciarcurso from "../../../components/iniciarcurso/page";
 
@@ -16,7 +15,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function Detalhescursos({ params }: Props) {
-  const {id} = await params;
+  const { id } = await params;
 
   return (
     <>
@@ -30,7 +29,15 @@ export default async function Detalhescursos({ params }: Props) {
           />
         </div>
         <div className="flex-1 flex flex-col gap-6">
-          <Headercurso />
+          <Headercurso
+            title="Curso de HTML5 Completo e GRÁTIS"
+            description="HTML5 é uma linguagem de marcação hipertexto utilizada para criar sites.
+        A versão5 da linguagem foi homologada e lançada a partir de 2009,
+        mas
+        só ganhou mercado no final de 2012 com o surgimento dos grandes
+         navegadores compatíveis."
+         classes="40 Aulas"
+          />
           <ConteudoDasAulas
             classgroups={[
               {

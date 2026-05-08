@@ -3,8 +3,12 @@
 import { useState } from "react";
 import { FaShareNodes } from "react-icons/fa6";
 import Compartilhar from "./botao-compartilhar/page";
-
-export default function Headercurso() {
+  interface headercurso {
+    title:string;
+    description:string;
+    classes:string;
+  }
+export default function Headercurso({title,description,classes}:headercurso) {
   const [x, setx] = useState(0);
   const [b, setb] = useState("mais");
 
@@ -18,15 +22,13 @@ export default function Headercurso() {
     }
   }
 
+
+
   return (
     <div className="flex flex-col gap-2">
-      <h1 className=" font-bold text-xl">Curso de HTML5 Completo e GRÁTIS</h1>
+      <h1 className=" font-bold text-xl">{title}</h1>
       <p className={x === 1 ? "" : "line-clamp-3"}>
-        HTML5 é uma linguagem de marcação hipertexto utilizada para criar sites.
-        <br />A versão5 da linguagem foi homologada e lançada a partir de 2009,
-        mas <br />
-        só ganhou mercado no final de 2012 com o surgimento dos grandes
-        <br /> navegadores compatíveis.
+        {description}
       </p>
       <button onClick={vermais} className=" w-16 underline flex gap-1">
         <p>Ver</p>{b} 
@@ -42,7 +44,7 @@ export default function Headercurso() {
             Compartilha
           </button>
         </Compartilhar>
-        <p>40 Aulas</p>
+        <p>{classes}</p>
       </div>
     </div>
   );
