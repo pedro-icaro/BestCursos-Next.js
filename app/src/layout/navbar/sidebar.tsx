@@ -13,7 +13,6 @@ import { CgHome } from "react-icons/cg";
 import { IoLogoFigma } from "react-icons/io5";
 import { SiJavascript } from "react-icons/si";
 import { usePathname } from "next/navigation";
-import { HiOutlinePresentationChartLine } from "react-icons/hi";
 import { IoMdTrendingUp } from "react-icons/io";
 
 export default function Navbar() {

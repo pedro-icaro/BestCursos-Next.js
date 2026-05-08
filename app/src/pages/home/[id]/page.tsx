@@ -1,5 +1,5 @@
-import Headercurso from "../../../components/header-curso/page";
-import Iniciarcurso from "../../../components/iniciarcurso/page";
+import Headercurso from "../../../components/header-curso/header-curso";
+import Iniciarcurso from "../../../components/iniciarcurso/iniciar-curso";
 
 import ConteudoDasAulas from "@/app/src/components/conteudo-das-aulas/conteudo-das-aulas";
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./src/layout/header/page";
-import Navbar from "./src/layout/navbar/page";
+import Header from "./src/layout/header/header";
+import Navbar from "./src/layout/navbar/sidebar";
 
 export const metadata: Metadata = {
   title: 'Dev-Pro',

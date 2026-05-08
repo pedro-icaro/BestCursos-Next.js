@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { MdPlayCircleOutline } from "react-icons/md";
-import { InView, useInView } from "react-intersection-observer"
+import { useInView } from "react-intersection-observer"
 
 interface IniciarProps {
     title:string;

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FaShareNodes } from "react-icons/fa6";
-import Compartilhar from "./botao-compartilhar/page";
+import Compartilhar from "./botao-compartilhar/botao-compartilhar";
   interface headercurso {
     title:string;
     description:string;

@@ -1,5 +1,5 @@
 import { FaSearch, FaUserCircle } from "react-icons/fa";
-import Logo from "../../components/logo/page";
+import Logo from "../../components/logo/logo";
 
 export default function Header(){
   return(
