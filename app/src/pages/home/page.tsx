@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Section from "../../components/section/section";
 import Card from "../../components/card/card";
+import ContinuarCurso from "../../components/continuarcurso/continuarcurso";
 
 
 export const metadata: Metadata = {
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
 export default function home() {
   return (
     <>
-      <div className="">
+      <div>
+        <ContinuarCurso />
         <h1 className="font-bold text-3xl p-1">Mais Relevantes</h1>
         <Section />
         <br />
