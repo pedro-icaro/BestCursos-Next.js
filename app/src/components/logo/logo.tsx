@@ -1,15 +1,16 @@
+import Link from "next/link";
 import { FaCode } from "react-icons/fa";
 
 export default function Logo() {
   return (
     <div>
-      <a
+      <Link
         href="/components/home"
-        className="flex flex-col mt-4 justify-center items-center"
+        className="flex  items-center gap-2"
       >
         <FaCode size={35} />
-        <h1 className=" font-semibold">DevPro</h1>
-      </a>
+        <h1 className=" font-semibold text-[20px]">DevPro</h1>
+      </Link>
     </div>
   );
 }
