@@ -28,8 +28,9 @@ export default function Navbar() {
           <FaCode size={40} />
           <h1 className=" font-semibold">DevPro</h1>
         </a>
-      </div>
-      <nav className="flex md:flex-col gap-5  flex-none items-center justify-center min-h-[70%]">
+      </div><br /><br /><br /><br />
+      <div className="hidden md:block">
+    <nav className="flex md:flex-col gap-5  flex-none items-center justify-center min-h-[70%]">
 
         <li
           className={
@@ -114,6 +115,8 @@ export default function Navbar() {
           </Link></span>
         </li>
       </nav>
+      </div>
+  
     </>
   );
 }

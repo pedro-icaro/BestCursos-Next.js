@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="grid md:grid-cols-[100px_1fr] h-screen w-screen overflow-hidden">
-          <aside className=" md:bg-olive-200 flex md:flex-col fixed bottom-0 bg-olive-200
+          <aside className=" md:bg-olive-200 flex md:flex-col fixed bottom-0
            h-15 w-full md:h-auto justify-center md:justify-start md:w-auto md:relative md:bottom-auto md:left-auto">
             <Navbar />
           </aside>
