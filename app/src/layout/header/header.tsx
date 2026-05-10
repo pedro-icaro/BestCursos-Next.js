@@ -4,8 +4,7 @@ import { FaSearch, FaUserCircle } from "react-icons/fa";
 import Logo from "../../components/logo/logo";
 import { IoMdMenu } from "react-icons/io";
 import { useState } from "react";
-import Link from "next/link";
-import { CgHome } from "react-icons/cg";
+import SidebarMobile from "../sidebar-mobile/sidebar-mobile";
 
 export default function Header() {
   const [botao, setbotao] = useState(false);
@@ -23,36 +22,7 @@ export default function Header() {
         </div>
        
           {botao === false && (
-             <div 
-        className="flex flex-col bg-olive-300 p-5 top-0 
-        bottom-0 h-full w-[60%] fixed left-0 z-50">
-            <nav className="">
-              {" "}
-              <ul className="flex flex-col h-full gap-2 text-[20px] font-bold">
-                <li className="">
-                  <Link href="" className="flex items-center gap-1"><CgHome />Home</Link>
-                </li>
-                <li>
-                  <Link href="">Html 5</Link>
-                </li>
-                <li>
-                  <Link href="">Css3</Link>
-                </li>
-                <li>
-                  <Link href="">Javascript</Link>
-                </li>
-                <li>
-                  <Link href="">Figma</Link>
-                </li>
-                <li>
-                  <Link href="">React</Link>
-                </li>
-              </ul>
-            </nav>
-            <div className=" w-auto h-auto ">
-
-            </div>
-            </div>
+            <SidebarMobile />
           )}
         
 
