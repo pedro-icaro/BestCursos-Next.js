@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <div>
       <Link
-        href="/components/home"
+        href="/src/pages/home"
         className="flex  items-center gap-2"
       >
         <FaCode size={35} />
