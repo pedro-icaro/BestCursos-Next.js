@@ -14,6 +14,7 @@ import { IoLogoFigma } from "react-icons/io5";
 import { SiJavascript } from "react-icons/si";
 import { usePathname } from "next/navigation";
 import { IoMdTrendingUp } from "react-icons/io";
+import { DiJavascript } from "react-icons/di";
 
 export default function Navbar() {
   const rota = usePathname();
@@ -65,7 +66,7 @@ export default function Navbar() {
           }
         ><span>
           <Link href="/javascriptt">
-            <SiJavascript size={22} />
+            <DiJavascript size={28} />
           </Link></span>
         </li>
         <li

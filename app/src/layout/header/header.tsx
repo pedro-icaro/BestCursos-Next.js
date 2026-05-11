@@ -20,11 +20,8 @@ export default function Header() {
         <div className=" block md:hidden">
           <Logo />
         </div>
-       
-          {botao === false && (
-            <SidebarMobile />
-          )}
-        
+
+        {botao === true && <SidebarMobile />}
 
         <div className="hidden md:block">
           <div
