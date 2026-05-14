@@ -26,7 +26,7 @@ export default function SidebarMobile() {
         </div>
         <nav className="p-5">
           {" "}
-          <ul className="flex flex-col h-full gap-4 text-[20px]  ">
+          <ul className="flex flex-col h-full gap-4 text-[20px]">
             <li className="">
               <Link href="/src/pages/home" className="flex items-center gap-3">
                 <CgHome size={28} />
@@ -72,9 +72,7 @@ export default function SidebarMobile() {
           </div>
         </nav>
       </div>
-      <div className="fixed right-0 top-0 w-41 h-full z-40">
-        <button className="w-full h-full"></button>
-      </div>
+
     </>
   );
 }
