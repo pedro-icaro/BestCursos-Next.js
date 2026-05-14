@@ -73,7 +73,7 @@ export default function SidebarMobile() {
         </nav>
       </div>
       <div className="fixed right-0 top-0 w-41 h-full z-40">
-        <button className="w-full h-full" onClick={() =>}></button>
+        <button className="w-full h-full"></button>
       </div>
     </>
   );
