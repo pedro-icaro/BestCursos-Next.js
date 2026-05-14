@@ -9,6 +9,8 @@ import { IoLogoFigma } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 
 export default function SidebarMobile() {
+
+
   return (
     <>
       <div
@@ -26,7 +28,7 @@ export default function SidebarMobile() {
           {" "}
           <ul className="flex flex-col h-full gap-4 text-[20px]  ">
             <li className="">
-              <Link href="" className="flex items-center gap-3">
+              <Link href="/src/pages/home" className="flex items-center gap-3">
                 <CgHome size={28} />
                 Home
               </Link>
@@ -69,6 +71,9 @@ export default function SidebarMobile() {
             </li>
           </div>
         </nav>
+      </div>
+      <div className="fixed right-0 top-0 w-41 h-full z-40">
+        <button className="w-full h-full" onClick={() =>}></button>
       </div>
     </>
   );
