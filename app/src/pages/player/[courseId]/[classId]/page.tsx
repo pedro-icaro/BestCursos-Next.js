@@ -1,14 +1,17 @@
-interface Props {
-    params: {
+interface Props{
+    params: Promise<{
         classId:string;
         courseId:string;
-    }  
+    }>;
 }
 
-export default function pageplayer({params:{classId, courseId}}: Props){
+export default async function PagePlayer({params}:Props){
+
+    const {courseId, classId} = await params
+
     return(
         <>
-        Player {courseId} {classId}
+         Player {courseId} {classId}
         </>
     )
 }
