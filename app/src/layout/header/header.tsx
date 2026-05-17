@@ -41,10 +41,10 @@ export default function Header() {
             />
           </div>
         </div>
-        <div className=" flex-1 flex gap-3 items-center justify-end overflow-y-auto">
-          <Link href="/src/pages/perfil">
+        <div className=" flex-1 flex gap-3 justify-end">
+          <Link href="/src/pages/perfil" className="flex items-center gap-2">
             {" "}
-            <FaUserCircle size="40px" className=" " />
+            <FaUserCircle size="40px"/>
             <span className=" hidden md:block">User Name</span>
           </Link>
         </div>
