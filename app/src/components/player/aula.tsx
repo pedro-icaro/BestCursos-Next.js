@@ -1,6 +1,6 @@
 import { MdCheckCircle, MdPlayCircleOutline } from "react-icons/md";
 
-interface PropsPlayer {
+ export interface PropsPlayer {
   title: string;
   done: boolean;
   play: boolean;
@@ -9,7 +9,7 @@ interface PropsPlayer {
 
 export default function PlayerAula({ title, play, done,}: PropsPlayer) {
   return (
-    <button className=" flex gap-6 p-4 items-center" >
+    <button className=" flex gap-3 p-2 ml-3 items-center" >
       {!done && 
       <MdPlayCircleOutline size={24} />
       }
@@ -23,7 +23,7 @@ export default function PlayerAula({ title, play, done,}: PropsPlayer) {
           {title}
           </p>
         {play && (
-          <span className="px-2 bg-blue-400 rounded-full">Reproduzindo</span>
+          <span className="px-2 text-[14px] text-white bg-blue-400 rounded-full">Reproduzindo</span>
         )}
       </div>
     </button>
