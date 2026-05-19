@@ -17,7 +17,7 @@ export default function GrupoAulas({classes,position,title}: PropsGrupoAulas) {
   return (
     <div className="flex flex-col gap-2 p-4">
       <button className="flex gap-2 p-4 bg-olive-200 items-center" onClick={() => setestado(!estado)}>
-        <div className="flex bg-olive-700 text-white h-12 w-12 rounded-full items-center justify-center">
+        <div className="flex bg-olive-400 text-white h-12 w-12 rounded-full items-center justify-center">
           {position}
         </div>
         <div className="flex flex-1 flex-col text-start">
