@@ -4,7 +4,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
 import PlayerAula, { PropsPlayer } from "./aula";
 import { useState } from "react";
 
-interface PropsGrupoAulas {
+export interface PropsGrupoAulas {
     position:number;
     title:string;
     
@@ -15,7 +15,7 @@ export default function GrupoAulas({classes,position,title}: PropsGrupoAulas) {
   const [estado,setestado] = useState(false)
   
   return (
-    <div className="flex flex-col gap-2 p-4">
+    <div className="flex flex-col gap-2 ">
       <button className="flex gap-2 p-4 bg-olive-200 items-center" onClick={() => setestado(!estado)}>
         <div className="flex bg-olive-400 text-white h-12 w-12 rounded-full items-center justify-center">
           {position}
@@ -31,7 +31,8 @@ export default function GrupoAulas({classes,position,title}: PropsGrupoAulas) {
         <MdKeyboardArrowDown size={24}/>
       }
       </button>
-      <ol data-estado={estado} className="flex flex-col data-[estado=false]:hidden">
+      <ol data-estado={estado} 
+      className="flex flex-col data-[estado=false]:hidden">
         {classes.map(classItem => (
           <li key={classItem.title}>
           <PlayerAula 
