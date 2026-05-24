@@ -4,11 +4,13 @@ export interface PropsPlayer {
   title: string;
   done: boolean;
   play: boolean;
+
+  onPlay: () => void;
 }
 
-export default function PlayerAula({ title, play, done }: PropsPlayer) {
+export default function PlayerAula({ title, play, done, onPlay }: PropsPlayer) {
   return (
-    <button className=" flex gap-3 p-2 ml-3 items-center">
+    <button className=" flex gap-3 p-2 ml-3 items-center" onClick={() => onPlay()}>
       {!done && <MdPlayCircleOutline size={24} />}
       {done && <MdCheckCircle size={24} className="text-green-600 " />}
       <div className=" flex flex-col gap-1 items-start">

@@ -72,7 +72,7 @@ export default async function PagePlayer({ params }: Props) {
           />
         </div>
 
-        <div className="flex-1">Player</div>
+        <div className="flex-1">Player {courseId}</div>
       </div>
     </main>
   );

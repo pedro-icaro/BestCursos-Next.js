@@ -17,9 +17,10 @@ export default function PlayerPlaylist({ classGroups, PlayClassId }: PropsPlayli
         {classGroups.map((classGroup, index) => (
           <li key={classGroup.title}>
             <GrupoAulas
+            onPlay={(classId) => console.log("play", classId)}
               PlayClassId={PlayClassId}
               {...classGroup}
-              position={index}
+              position={index} 
               
             />
           </li>

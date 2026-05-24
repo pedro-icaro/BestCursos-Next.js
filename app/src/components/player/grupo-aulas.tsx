@@ -9,9 +9,11 @@ export interface PropsGrupoAulas {
     title:string;
     PlayClassId:string;
     classes: (Pick<PropsPlayer,"done" | "title"> & {classId: string})[];
+
+    onPlay:(classId:string) => void;
     
 }
-export default function GrupoAulas({classes,position,title,PlayClassId}: PropsGrupoAulas) {
+export default function GrupoAulas({classes,position,title,PlayClassId,onPlay}: PropsGrupoAulas) {
   const [estado,setestado] = useState(false)
   
   return ( 
@@ -38,6 +40,8 @@ export default function GrupoAulas({classes,position,title,PlayClassId}: PropsGr
           <PlayerAula 
           {...classItem}
           play={(classItem.classId === PlayClassId)}
+
+          onPlay={() => onPlay(classItem.classId)}
           />
         </li>
         ))}
