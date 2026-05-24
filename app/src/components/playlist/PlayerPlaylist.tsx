@@ -13,11 +13,11 @@ export default function PlayerPlaylist({ classGroups, PlayClassId, PlayCourseId 
   const router = useRouter();
   
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex flex-col p-4 bg-olive-200">
+    <div className="flex flex-col gap-2 h-full overflow-hidden">
+      <div className="flex flex-col p-4 bg-olive-200 shrink-0">
         <h3 className=" text-lg">Conteúdo do curso</h3>
       </div>
-      <ol>
+      <ol className="flex-1 overflow-y-auto">
         {classGroups.map((classGroup, index) => (
           <li key={classGroup.title}>
             <GrupoAulas

@@ -6,6 +6,7 @@ export interface PropsPlayer {
   play: boolean;
 
   onPlay: () => void;
+   onCheck:(classId:string) => void;
 }
 
 export default function PlayerAula({ title, play, done, onPlay }: PropsPlayer) {

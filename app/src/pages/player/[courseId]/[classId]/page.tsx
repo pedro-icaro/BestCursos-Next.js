@@ -12,9 +12,9 @@ export default async function PagePlayer({ params }: Props) {
   const { courseId, classId } = await params;
 
   return (
-    <main className="flex flex-col gap-2">
-      <div className="flex gap-2">
-        <div className="flex-1 max-w-[480]"> 
+    <main className="flex flex-col gap-2 h-screen">
+      <div className="flex gap-2 h-full">
+       <div className="flex-1 max-w-[480] h-[600px]"> 
           <PlayerPlaylist 
             PlayCourseId={courseId}
             PlayClassId={classId}
@@ -68,7 +68,32 @@ export default async function PagePlayer({ params }: Props) {
                     title: "Curso de HTML5 - 03 - Site Completo - by Gustavo Guanabara",
                   },
                 ]
-              },
+              }, { 
+
+                title: "Introdução e apresentação do curso", 
+                classes: [ 
+                  {
+                    done: true,
+                    classId: "aula-01",
+                    title: "Curso de HTML5 - 00 - Site Completo - by Gustavo Guanabara",
+                  },
+                  {
+                    done: true,
+                    classId:"aula-02",
+                    title: "Curso de HTML5 - 01 - Site Completo - by Gustavo Guanabara",
+                  },
+                  {
+                    done: false,
+                  classId:"aula-03",
+                    title: "Curso de HTML5 - 02 - Site Completo - by Gustavo Guanabara",
+                  },
+                  {
+                    done: false,
+                    classId:"aula-04",
+                    title: "Curso de HTML5 - 03 - Site Completo - by Gustavo Guanabara",
+                  },
+                ]
+              },  
             ]}
           />
         </div>
