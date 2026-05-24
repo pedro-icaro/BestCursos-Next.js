@@ -16,38 +16,63 @@ export default async function PagePlayer({ params }: Props) {
       <div className="flex gap-2">
         <div className="flex-1 max-w-[480]"> 
           <PlayerPlaylist 
+            PlayClassId={classId}
             classGroups={[
               { 
-                position: 1,
+
                 title: "Introdução e apresentação do curso", 
                 classes: [ 
                   {
                     done: true,
-                    play: false,
+                    classId: "aula-01",
                     title: "Curso de HTML5 - 00 - Site Completo - by Gustavo Guanabara",
                   },
                   {
                     done: true,
-                    play: false,
+                    classId:"aula-02",
                     title: "Curso de HTML5 - 01 - Site Completo - by Gustavo Guanabara",
                   },
                   {
                     done: false,
-                    play: true,
+                  classId:"aula-03",
                     title: "Curso de HTML5 - 02 - Site Completo - by Gustavo Guanabara",
                   },
                   {
                     done: false,
-                    play: false,
+                    classId:"aula-04",
                     title: "Curso de HTML5 - 03 - Site Completo - by Gustavo Guanabara",
                   },
                 ]
-              }
+              },              { 
+                title: "Resolusões de atividades", 
+                classes: [ 
+                  {
+                    done: false,
+                    classId:"aula-05",
+                    title: "Curso de HTML5 - 00 - Site Completo - by Gustavo Guanabara",
+                  },
+                  {
+                    done: false,
+                    classId:"aula-06",
+                    title: "Curso de HTML5 - 01 - Site Completo - by Gustavo Guanabara",
+                  },
+                  {
+                    done: false,
+                  classId:"aula-07",
+                    title: "Curso de HTML5 - 02 - Site Completo - by Gustavo Guanabara",
+                  },
+                  {
+                    done: false,
+                    classId:"aula-08",
+                    title: "Curso de HTML5 - 03 - Site Completo - by Gustavo Guanabara",
+                  },
+                ]
+              },
             ]}
           />
         </div>
 
-        <div className="flex-1">Player {courseId} {classId}</div>
+        <div className="flex-1">Player</div>
       </div>
     </main>
   );

@@ -7,14 +7,14 @@ import { useState } from "react";
 export interface PropsGrupoAulas {
     position:number;
     title:string;
-    
-    classes: PropsPlayer[];
+    PlayClassId:string;
+    classes: (Pick<PropsPlayer,"done" | "title"> & {classId: string})[];
     
 }
-export default function GrupoAulas({classes,position,title}: PropsGrupoAulas) {
+export default function GrupoAulas({classes,position,title,PlayClassId}: PropsGrupoAulas) {
   const [estado,setestado] = useState(false)
   
-  return (
+  return ( 
     <div className="flex flex-col gap-2 ">
       <button className="flex gap-2 p-4 bg-olive-200 items-center" onClick={() => setestado(!estado)}>
         <div className="flex bg-olive-400 text-white h-12 w-12 rounded-full items-center justify-center">
@@ -37,6 +37,7 @@ export default function GrupoAulas({classes,position,title}: PropsGrupoAulas) {
           <li key={classItem.title}>
           <PlayerAula 
           {...classItem}
+          play={(classItem.classId === PlayClassId)}
           />
         </li>
         ))}
