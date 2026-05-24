@@ -12,9 +12,9 @@ export default async function PagePlayer({ params }: Props) {
   const { courseId, classId } = await params;
 
   return (
-    <main className="flex flex-col gap-2 h-screen">
+    <main className="flex flex-col gap-2 h-[calc(100vh-64px)]">
       <div className="flex gap-2 h-full">
-       <div className="flex-1 max-w-[480] h-[600px]"> 
+       <div className="flex-1 max-w-[480] h-[600]"> 
           <PlayerPlaylist 
             PlayCourseId={courseId}
             PlayClassId={classId}
