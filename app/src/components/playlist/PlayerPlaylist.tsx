@@ -21,6 +21,7 @@ export default function PlayerPlaylist({ classGroups, PlayClassId, PlayCourseId 
         {classGroups.map((classGroup, index) => (
           <li key={classGroup.title}>
             <GrupoAulas
+            onCheck={classId => console.log("check", classId)}
             onPlay={(classId) => router.push(`/player/${PlayCourseId}/${classId}`)}
               PlayClassId={PlayClassId}
               {...classGroup}

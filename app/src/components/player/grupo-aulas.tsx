@@ -11,9 +11,10 @@ export interface PropsGrupoAulas {
     classes: (Pick<PropsPlayer,"done" | "title"> & {classId: string})[];
 
     onPlay:(classId:string) => void;
+    onCheck:(classId:string) => void;
     
 }
-export default function GrupoAulas({classes,position,title,PlayClassId,onPlay}: PropsGrupoAulas) {
+export default function GrupoAulas({classes,position,title,PlayClassId,onPlay,onCheck}: PropsGrupoAulas) {
   const [estado,setestado] = useState(false)
   
   return ( 
@@ -40,7 +41,7 @@ export default function GrupoAulas({classes,position,title,PlayClassId,onPlay}: 
           <PlayerAula 
           {...classItem}
           play={(classItem.classId === PlayClassId)}
-
+          onCheck={() => onCheck(classItem.classId)}
           onPlay={() => onPlay(classItem.classId)}
           />
         </li>
