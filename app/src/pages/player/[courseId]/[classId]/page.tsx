@@ -16,6 +16,7 @@ export default async function PagePlayer({ params }: Props) {
       <div className="flex gap-2">
         <div className="flex-1 max-w-[480]"> 
           <PlayerPlaylist 
+            PlayCourseId={courseId}
             PlayClassId={classId}
             classGroups={[
               { 
