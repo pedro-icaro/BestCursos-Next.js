@@ -4,7 +4,7 @@ import { MdPlayCircle } from "react-icons/md";
 export default function ContinuarCurso() {
   return (
     <Link
-      href={`/src/pages/player/{courseId}/{classId}`}
+      href={`/player/{courseId}/{classId}`}
       className="p-3 flex bg-olive-200 rounded-[10px] gap-2"
     >
       <div className="flex-1">

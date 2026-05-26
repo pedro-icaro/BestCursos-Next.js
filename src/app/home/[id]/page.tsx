@@ -1,7 +1,7 @@
 import Headercurso from "../../../components/header-curso/header-curso";
 import Iniciarcurso from "../../../components/iniciarcurso/iniciar-curso";
 
-import ConteudoDasAulas from "@/app/src/components/conteudo-das-aulas/conteudo-das-aulas";
+import ConteudoDasAulas from "@/components/conteudo-das-aulas/conteudo-das-aulas";
 
 interface Props {
   params: Promise<{ id: string }>;

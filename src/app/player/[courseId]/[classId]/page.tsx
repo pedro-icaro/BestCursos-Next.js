@@ -1,4 +1,4 @@
-import PlayerPlaylist from "@/app/src/components/playlist/PlayerPlaylist";
+import PlayerPlaylist from "@/components/playlist/PlayerPlaylist";
 
 interface Props {
   params: Promise<{

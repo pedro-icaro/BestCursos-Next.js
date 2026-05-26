@@ -28,7 +28,7 @@ export default function SidebarMobile() {
           {" "}
           <ul className="flex flex-col h-full gap-4 text-[20px]">
             <li className="">
-              <Link href="/src/pages/home" className="flex items-center gap-3">
+              <Link href="/home" className="flex items-center gap-3">
                 <CgHome size={28} />
                 Home
               </Link>

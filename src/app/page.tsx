@@ -1,4 +1,5 @@
-import Home from "./src/pages/home/page"
+import Home from "@/app/home/page"
+
 export default function page(){
     return(
         <>

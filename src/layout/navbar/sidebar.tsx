@@ -11,7 +11,6 @@ import {
 } from "react-icons/fa";
 import { CgHome } from "react-icons/cg";
 import { IoLogoFigma } from "react-icons/io5";
-import { SiJavascript } from "react-icons/si";
 import { usePathname } from "next/navigation";
 import { IoMdTrendingUp } from "react-icons/io";
 import { DiJavascript } from "react-icons/di";
@@ -71,12 +70,12 @@ export default function Navbar() {
         </li>
         <li
           className={
-            rota === "/src/pages/home"
+            rota === "/home"
               ? "bg-olive-300 flex items-center p-3 rounded-full w-[50]"
               : "gap-2 p-1 flex items-center hover:ml-[7] transition-[10s] text-lg"
           }
         ><span>
-          <Link href="/src/pages/home">
+          <Link href="/home">
             <CgHome size={26} />
           </Link></span>
         </li>        
