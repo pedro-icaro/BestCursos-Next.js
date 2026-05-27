@@ -1,3 +1,4 @@
+import PlayerVideoPlayer from "@/components/player/PlayerVideoPlayer";
 import PlayerPlaylist from "@/components/playlist/PlayerPlaylist";
 
 interface Props {
@@ -98,7 +99,7 @@ export default async function PagePlayer({ params }: Props) {
           />
         </div>
 
-        <div className="flex-1">Player {courseId}</div>
+        <div className="flex-1"><PlayerVideoPlayer videoId="epDCjksKMok"/></div>
       </div>
     </main>
   );
