@@ -1,4 +1,5 @@
-import PlayerVideoPlayer from "@/components/player/PlayerVideoPlayer";
+import PlayerVideoPlayer from "@/components/player/player-class-details/components/PlayerVideoPlayer";
+import PlayerClassDetails from "@/components/player/player-class-details/PlayerClassDetails";
 import PlayerPlaylist from "@/components/playlist/PlayerPlaylist";
 
 interface Props {
@@ -109,11 +110,7 @@ export default async function PagePlayer({ params }: Props) {
             ]}
           />
         </div>
-        <div className="flex-1">
-          <div className="aspect-video">
-            <PlayerVideoPlayer videoId="epDCjksKMok" />
-          </div>
-        </div>
+        <PlayerClassDetails />
       </div>
     </main>
   );
