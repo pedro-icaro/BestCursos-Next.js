@@ -11,7 +11,12 @@ interface PropsVideoPlayer{
 export default function PlayerVideoPlayer({videoId}:PropsVideoPlayer){    
     return(
         <>
-            <ReactPlayer src={`https://www.youtube.com/watch?v=${videoId}`} height={400} width={700}/>
+            <ReactPlayer  
+            src={`https://www.youtube.com/watch?v=${videoId}`} 
+            height={400} 
+            width={700}
+            controls={true}
+            />
         </>
     )
 }
