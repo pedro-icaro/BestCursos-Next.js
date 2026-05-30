@@ -1,6 +1,7 @@
 import PlayerVideoPlayer from "@/components/player/player-class-details/components/PlayerVideoPlayer";
 import PlayerClassDetails from "@/components/player/player-class-details/PlayerClassDetails";
 import PlayerPlaylist from "@/components/playlist/PlayerPlaylist";
+import { title } from "process";
 
 interface Props {
   params: Promise<{
@@ -110,7 +111,14 @@ export default async function PagePlayer({ params }: Props) {
             ]}
           />
         </div>
-        <PlayerClassDetails />
+        <PlayerClassDetails
+          course={{
+            title: "Curso de HTML5 Completo e GRÁTIS",
+            classes:40,
+            description:
+              "HTML5 é uma linguagem de marcação hipertexto utilizada para criar sites A versão5 da linguagem foi homologada e lançada a partir de 2009, mas só ganhou mercado no final de 2012 com o surgimento dos grandesnavegadores compatíveis.",
+          }}
+        />
       </div>
     </main>
   );

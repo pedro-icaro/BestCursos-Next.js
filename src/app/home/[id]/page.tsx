@@ -36,7 +36,7 @@ export default async function Detalhescursos({ params }: Props) {
         mas
         só ganhou mercado no final de 2012 com o surgimento dos grandes
          navegadores compatíveis."
-         classes="40 Aulas"
+         classes={40}
           />
           <ConteudoDasAulas
             classgroups={[

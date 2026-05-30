@@ -6,7 +6,7 @@ import Compartilhar from "./botao-compartilhar/botao-compartilhar";
   interface headercurso {
     title:string;
     description:string;
-    classes:string;
+    classes:number;
   }
 export default function Headercurso({title,description,classes}:headercurso) {
   const [x, setx] = useState(0);

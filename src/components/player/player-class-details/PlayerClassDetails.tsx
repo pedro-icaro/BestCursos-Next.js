@@ -3,12 +3,21 @@
 import { Tabs } from "radix-ui";
 import PlayerVideoPlayer from "./components/PlayerVideoPlayer";
 import { useState } from "react";
+import Headercurso from "@/components/header-curso/header-curso";
 
-export default function PlayerClassDetails() {
+interface PropsClassDetails {
+  course: {
+    title: string;
+    description: string;
+    classes: number;
+  };
+}
+
+export default function PlayerClassDetails({ course }: PropsClassDetails) {
   const [valor, setvalor] = useState<string | number>("0");
 
   return (
-    <div className="flex-1">
+    <div className="flex-1 overflow-auto">
       <div className="aspect-video">
         <PlayerVideoPlayer videoId="epDCjksKMok" />
       </div>
@@ -46,16 +55,21 @@ export default function PlayerClassDetails() {
                   ? `p-2 flex items-center justify-center border-b-4 border-olive-900`
                   : `p-2 flex items-center justify-center`
               }
-            
             >
-              Visão do curso
+              Detalhes do curso
             </Tabs.Trigger>
           </button>
         </Tabs.List>
         <hr />
         <Tabs.Content value="class-details">Detalhes da aula</Tabs.Content>
         <Tabs.Content value="class-comments">comentarios da aula</Tabs.Content>
-        <Tabs.Content value="course-details">Detalhes do curso</Tabs.Content>
+        <Tabs.Content value="course-details">
+          <Headercurso
+            classes={course.classes}
+            description={course.description}
+            title={course.title}
+          />
+        </Tabs.Content>
       </Tabs.Root>
     </div>
   );
