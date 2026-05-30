@@ -118,6 +118,7 @@ export default async function PagePlayer({ params }: Props) {
             description:
               "HTML5 é uma linguagem de marcação hipertexto utilizada para criar sites A versão5 da linguagem foi homologada e lançada a partir de 2009, mas só ganhou mercado no final de 2012 com o surgimento dos grandesnavegadores compatíveis.",
           }}
+          classitem={{description:"HTML5 é uma linguagem de marcação hipertexto utilizada para criar sites A versão5 da linguagem foi homologada e lançada a partir de 2009, mas só ganhou mercado no final de 2012 com o surgimento dos grandesnavegadores compatíveis.", title:"Curso de HTML5 Completo e GRÁTIS"}}
         />
       </div>
     </main>

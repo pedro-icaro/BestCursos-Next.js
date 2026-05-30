@@ -4,6 +4,7 @@ import { Tabs } from "radix-ui";
 import PlayerVideoPlayer from "./components/PlayerVideoPlayer";
 import { useState } from "react";
 import Headercurso from "@/components/header-curso/header-curso";
+import PlayerClassHeader from "./components/PlayerClassHeader";
 
 interface PropsClassDetails {
   course: {
@@ -11,9 +12,13 @@ interface PropsClassDetails {
     description: string;
     classes: number;
   };
+  classitem:{
+    title:string;
+    description:string;
+  }
 }
 
-export default function PlayerClassDetails({ course }: PropsClassDetails) {
+export default function PlayerClassDetails({ course, classitem }: PropsClassDetails) {
   const [valor, setvalor] = useState<string | number>("0");
 
   return (
@@ -61,7 +66,7 @@ export default function PlayerClassDetails({ course }: PropsClassDetails) {
           </button>
         </Tabs.List>
         <hr />
-        <Tabs.Content value="class-details">Detalhes da aula</Tabs.Content>
+        <Tabs.Content value="class-details"><PlayerClassHeader title={classitem.title} description={classitem.description}/></Tabs.Content>
         <Tabs.Content value="class-comments">comentarios da aula</Tabs.Content>
         <Tabs.Content value="course-details">
           <Headercurso

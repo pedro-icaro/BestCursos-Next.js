@@ -44,7 +44,7 @@ export default function Headercurso({title,description,classes}:headercurso) {
             Compartilha
           </button>
         </Compartilhar>
-        <p>{classes}</p>
+        <p>{classes} Aulas</p>
       </div>
     </div>
   );
