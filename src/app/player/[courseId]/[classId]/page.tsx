@@ -1,7 +1,5 @@
-import PlayerVideoPlayer from "@/components/player/player-class-details/components/PlayerVideoPlayer";
 import PlayerClassDetails from "@/components/player/player-class-details/PlayerClassDetails";
 import PlayerPlaylist from "@/components/playlist/PlayerPlaylist";
-import { title } from "process";
 
 interface Props {
   params: Promise<{
