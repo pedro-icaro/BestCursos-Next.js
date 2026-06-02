@@ -27,7 +27,7 @@ export default function PlayerClassDetails({ course, classitem }: PropsClassDeta
       <div className="aspect-video">
         <PlayerVideoPlayer videoId="epDCjksKMok" />
       </div>
-      <Tabs.Root defaultValue="class-details" className="px-2">
+      <Tabs.Root defaultValue="class-details" className="px-2 py-4">
         <Tabs.List className="flex gap-4 ">
           <button onClick={() => setvalor(1)}>
             <Tabs.Trigger

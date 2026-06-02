@@ -16,7 +16,7 @@ export default function Comment() {
       
       <div className=" bg-olive-300 flex-1 flex flex-col gap-4 p-2 rounded-[4]">
         <div className="flex gap-2 items-center">
-          <span className="font-bold">user name</span>{" "}
+          <span className="font-bold">user name</span>
           <span className="font-semibold text-xs text-olive-800 opacity-50">
             12/12/2004 ás 19:20
           </span>
