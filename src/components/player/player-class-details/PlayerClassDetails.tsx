@@ -5,6 +5,7 @@ import PlayerVideoPlayer from "./components/PlayerVideoPlayer";
 import { useState } from "react";
 import Headercurso from "@/components/header-curso/header-curso";
 import PlayerClassHeader from "./components/PlayerClassHeader";
+import Comments from "./components/comments/comments";
 
 interface PropsClassDetails {
   course: {
@@ -26,7 +27,7 @@ export default function PlayerClassDetails({ course, classitem }: PropsClassDeta
       <div className="aspect-video">
         <PlayerVideoPlayer videoId="epDCjksKMok" />
       </div>
-      <Tabs.Root defaultValue="class-details" >
+      <Tabs.Root defaultValue="class-details" className="px-2">
         <Tabs.List className="flex gap-4 ">
           <button onClick={() => setvalor(1)}>
             <Tabs.Trigger
@@ -65,9 +66,9 @@ export default function PlayerClassDetails({ course, classitem }: PropsClassDeta
             </Tabs.Trigger>
           </button>
         </Tabs.List>
-        <hr />
+        <hr /><br />
         <Tabs.Content value="class-details"><PlayerClassHeader title={classitem.title} description={classitem.description}/></Tabs.Content>
-        <Tabs.Content value="class-comments">comentarios da aula</Tabs.Content>
+        <Tabs.Content value="class-comments"><Comments /></Tabs.Content>
         <Tabs.Content value="course-details">
           <Headercurso
             classes={course.classes}
