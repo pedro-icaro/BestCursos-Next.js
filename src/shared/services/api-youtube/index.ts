@@ -8,7 +8,7 @@ const YoutubeAPIClient = youtube({
 export const APIYoutube = {
     course: {
         getAll: async () => {
-            const playlistIds = ["PLHz_AreHm4dlAnJ_jJtV29RFxnPHDuk9o","PLHz_AreHm4dmSj0MHol_aoNYCSGFqvfXV","PL29TaWXah3iYzP5FGywXezXm4ZvBibGSk"]
+            const playlistIds = ["PLHz_AreHm4dlAnJ_jJtV29RFxnPHDuk9o","PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1","PL29TaWXah3iYzP5FGywXezXm4ZvBibGSk"]
 
             const { data } = await YoutubeAPIClient.playlists.list({
                 part: ["snippet"],
