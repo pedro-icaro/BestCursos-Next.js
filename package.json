@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@googleapis/youtube": "^33.0.0",
     "@radix-ui/react-tabs": "^1.1.13",
     "interweave": "^13.1.1",
     "interweave-autolink": "^5.1.2",

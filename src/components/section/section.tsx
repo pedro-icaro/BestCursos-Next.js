@@ -1,36 +1,25 @@
+import { ComponentProps } from "react";
 import Card from "../card/card";
 
-export default function section() {
+interface PropsSection {
+  items: ComponentProps<typeof Card>[];
+}
+
+export default function Section({ items }: PropsSection) {
   return (
-    <>
-      <section>
-        <div className="flex gap-3 relative overflow-hidden overflow-x-auto -mr-4">
-          <div>
+    <section>
+      <div className="flex gap-3 relative overflow-hidden overflow-x-auto -mr-4">
+        {items.map((item, index) => (
+          <div key={index}>
             <Card
-              capa="https://i.ytimg.com/vi/epDCjksKMok/hqdefault.jpg"
-              descricao=" HTML5 é uma linguagem de marcação hipertexto utilizada para criarsites. A versão 5 da linguagem foihomologada e lançada a partir de 2009, mas só ganhou mercado no final de 2012 com o surgimento dosgrandes navegadores compatíveis."
-              titulocard="Curso Html 5"
-              href="home/123"
+              image={item.image}
+              description={item.description}
+              title={item.title}
+              href={item.href}
             />
           </div>
-          <div>
-            <Card
-              capa="https://i.ytimg.com/vi/epDCjksKMok/hqdefault.jpg"
-              descricao=" HTML5 é uma linguagem de marcação hipertexto utilizada para criarsites. A versão 5 da linguagem foihomologada e lançada a partir de 2009, mas só ganhou mercado no final de 2012 com o surgimento dosgrandes navegadores compatíveis."
-              titulocard="Curso Html 5"
-              href="home/123"
-            />
-          </div>
-          <div>
-            <Card
-              capa="https://i.ytimg.com/vi/epDCjksKMok/hqdefault.jpg"
-              descricao=" HTML5 é uma linguagem de marcação hipertexto utilizada para criarsites. A versão 5 da linguagem foihomologada e lançada a partir de 2009, mas só ganhou mercado no final de 2012 com o surgimento dosgrandes navegadores compatíveis."
-              titulocard="Curso Html 5"
-              href="home/123"
-            />
-          </div>
-        </div>
-      </section>
-    </>
+        ))}
+      </div>
+    </section>
   );
 }

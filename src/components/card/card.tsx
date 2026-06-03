@@ -2,13 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface propscards {
-  titulocard: string;
-  descricao: string;
-  capa: string;
+  title: string;
+  description: string;
+  image: string;
   href:string;
 }
 
-export default function card({ titulocard, descricao, capa,href}: propscards) {
+export default function card({ title, description, image ,href }: propscards) {
   return (
     <>
       <Link href={href}>
@@ -18,13 +18,13 @@ export default function card({ titulocard, descricao, capa,href}: propscards) {
         >
           <Image
             alt=""
-            src={capa}
+            src={image}
             width={400}
             height={100}
             className=" rounded-[5]"
           />
-          <h1 className="font-bold text-2xl">{titulocard}</h1>
-          <p className=" line-clamp-3">{descricao}</p>
+          <h1 className="font-bold text-2xl">{title}</h1>
+          <p className=" line-clamp-3">{description}</p>
         </div>
       </Link>
     </>
