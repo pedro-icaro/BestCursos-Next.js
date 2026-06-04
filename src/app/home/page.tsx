@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Section from "../../components/section/section";
-import Card from "../../components/card/card";
 import ContinuarCurso from "../../components/continuarcurso/continuarcurso";
 import { APIYoutube } from "@/shared/services/api-youtube";
 

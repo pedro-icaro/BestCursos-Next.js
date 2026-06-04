@@ -20,7 +20,7 @@ export default async function PagePlayer({ params }: Props) {
             PlayClassId={classId}
             classGroups={[
               {
-                title: "Introdução e apresentação do curso",
+                title: "Conteúdo 0 á 10",
                 classes: [
                   {
                     done: true,
@@ -49,7 +49,7 @@ export default async function PagePlayer({ params }: Props) {
                 ],
               },
               {
-                title: "Resolusões de atividades",
+                title: "Conteúdo 11 á 20",
                 classes: [
                   {
                     done: false,
@@ -78,7 +78,7 @@ export default async function PagePlayer({ params }: Props) {
                 ],
               },
               {
-                title: "Introdução e apresentação do curso",
+                title: "Conteúdo 21 á 30",
                 classes: [
                   {
                     done: true,

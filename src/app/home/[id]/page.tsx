@@ -42,23 +42,7 @@ export default async function Detalhescursos({ params }: Props) {
             classgroups={[
               {
                 cursoId: "123",
-                title: "Introdução e apresentação do curso",
-                classes: [
-                  {
-                    id: "234",
-                    title:
-                      "Curso de HTML5 - 00 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
-                    id: "235",
-                    title:
-                      "Curso de HTML5 - 01 - História da Internet - by Gustavo Guanabara",
-                  },
-                ],
-              },
-              {
-                cursoId: "123",
-                title: "Inicializando conteúdo",
+                title: "Conteúdo do curso",
                 classes: [
                   {
                     id: "234",

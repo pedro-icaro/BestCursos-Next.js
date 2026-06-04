@@ -7,7 +7,6 @@ interface Grupoaulas {
 export default function ConteudoDasAulas({ classgroups }: Grupoaulas) {
   return (
     <div className="flex flex-col gap-3">
-      <h2 className=" text-lg">conteúdo do curso</h2>
       <ol className="flex flex-col">
         {classgroups.map((classgroup) => {
           return (
