@@ -1,6 +1,6 @@
 import PlayerClassDetails from "@/components/player/player-class-details/PlayerClassDetails";
 import PlayerPlaylist from "@/components/playlist/PlayerPlaylist";
-
+import { APIYoutube } from "@/shared/services/api-youtube";
 interface Props {
   params: Promise<{
     classId: string;
@@ -10,6 +10,7 @@ interface Props {
 
 export default async function PagePlayer({ params }: Props) {
   const { courseId, classId } = await params;
+ 
 
   return (
     <main className="flex flex-col gap-2 h-50">
@@ -20,7 +21,7 @@ export default async function PagePlayer({ params }: Props) {
             PlayClassId={classId}
             classGroups={[
               {
-                title: "Conteúdo 0 á 10",
+                title: "Conteúdo",
                 classes: [
                   {
                     done: true,
@@ -45,64 +46,6 @@ export default async function PagePlayer({ params }: Props) {
                     classId: "aula-04",
                     title:
                       "4-Curso de HTML5 - 03 - Site Completo - by Gustavo Guanabara",
-                  },
-                ],
-              },
-              {
-                title: "Conteúdo 11 á 20",
-                classes: [
-                  {
-                    done: false,
-                    classId: "aula-05",
-                    title:
-                      "5-Curso de HTML5 - 00 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
-                    done: false,
-                    classId: "aula-06",
-                    title:
-                      "6-Curso de HTML5 - 01 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
-                    done: false,
-                    classId: "aula-07",
-                    title:
-                      "7-Curso de HTML5 - 02 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
-                    done: false,
-                    classId: "aula-08",
-                    title:
-                      "8-Curso de HTML5 - 03 - Site Completo - by Gustavo Guanabara",
-                  },
-                ],
-              },
-              {
-                title: "Conteúdo 21 á 30",
-                classes: [
-                  {
-                    done: true,
-                    classId: "aula-01",
-                    title:
-                      "9-Curso de HTML5 - 00 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
-                    done: true,
-                    classId: "aula-02",
-                    title:
-                      "10-Curso de HTML5 - 01 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
-                    done: false,
-                    classId: "aula-03",
-                    title:
-                      "11-Curso de HTML5 - 02 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
-                    done: false,
-                    classId: "aula-04",
-                    title:
-                      "12-Curso de HTML5 - 03 - Site Completo - by Gustavo Guanabara",
                   },
                 ],
               },

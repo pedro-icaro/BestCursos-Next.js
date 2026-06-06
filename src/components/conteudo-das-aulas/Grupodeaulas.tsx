@@ -14,25 +14,15 @@ export interface AulasProps {
 }
 
 export default function Grupodeaulas({ title, classes, cursoId }: AulasProps) {
-  const [abre, setabre] = useState(false);
-
   return (
     <>
-      <div className="flex flex-col gap-2">
-        <button
-          className="flex items-center gap-2 bg-olive-200 p-3 rounded"
-          onClick={() => setabre(!abre)}
-        >
-          {abre === true ? ( 
-            <MdKeyboardArrowDown size={24} />
-          ) : (
-            <MdKeyboardArrowRight size={24} />
-          )}
-          {title}
-        </button>
-        <ol data-abre={abre} className="flex flex-col data-[abre=false]:hidden mt-[-10]">
+      <div className="flex flex-col gap-5">
+      <div className="flex flex-col p-4 bg-olive-200 shrink-0">
+        <h3 className=" text-lg">Conteúdo do curso</h3>
+      </div>
+        <ol  className="flex flex-col  mt-[-10]">
           {classes.map(({ id, title }) => (
-            <li key={id}>
+            <li key={id} >
               <Aulas 
               title={title} 
               playerUrl={`/player/${cursoId}/${id}`} 

@@ -18,14 +18,14 @@ export default function PlayerPlaylist({ classGroups, PlayClassId, PlayCourseId 
         <h3 className=" text-lg">Conteúdo do curso</h3>
       </div>
       <ol className="flex-1 overflow-y-auto">
-        {classGroups.map((classGroup, index) => (
+        {classGroups.map((classGroup,) => (
           <li key={classGroup.title}>
             <GrupoAulas
             onCheck={classId => console.log("check", classId)}
             onPlay={(classId) => router.push(`/player/${PlayCourseId}/${classId}`)}
               PlayClassId={PlayClassId}
               {...classGroup}
-              position={index} 
+            
               
             />
           </li>
