@@ -1,7 +1,7 @@
 import Headercurso from "../../../components/header-curso/header-curso";
 import Iniciarcurso from "../../../components/iniciarcurso/iniciar-curso";
-
 import ConteudoDasAulas from "@/components/conteudo-das-aulas/conteudo-das-aulas";
+import { APIYoutube } from "@/shared/services/api-youtube"; 
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -9,56 +9,61 @@ interface Props {
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;
+  const curso = await APIYoutube.course.getById(id);
+  
   return {
-    title: `Curso de ${id}`,
+    title: curso ? curso.title : "Carregando Curso...",
   };
 }
 
 export default async function Detalhescursos({ params }: Props) {
   const { id } = await params;
+  const curso = await APIYoutube.course.getById(id);
+  const aulas = await APIYoutube.lessons.getByPlaylistId(id);
+
+  if (!curso) {
+    return (
+      <div className="flex justify-center items-center min-h-[50vh] text-white font-semibold">
+        Ops! Esse curso não foi encontrado ou o ID da playlist é inválido.
+      </div>
+    );
+  }
 
   return (
     <>
-      <div className="flex flex-col md:flex-row-reverse gap-5 md:gap-20 md:w-auto left-0">
+      <div className="flex flex-col md:flex-row-reverse gap-5 md:gap-20 md:w-auto left-0 text-white">
+        
         <div className="flex-1">
           <Iniciarcurso
-            title="Curso de HTML5 Completo e GRÁTIS"
-            idClass="1"
-            idCurso="1"
-            imagemUrl="https://i.ytimg.com/vi/epDCjksKMok/hqdefault.jpg"
+            title={curso.title} 
+            idClass={aulas[0]?.videoId || ""} 
+            idCurso={curso.id}
+            imagemUrl={curso.image} 
           />
         </div>
-        <div className="flex-1 flex flex-col gap-6">
+        
+        <div className="flex-1 flex flex-col gap-6 text-black">
           <Headercurso
-            title="Curso de HTML5 Completo e GRÁTIS"
-            description="HTML5 é uma linguagem de marcação hipertexto utilizada para criar sites.
-        A versão5 da linguagem foi homologada e lançada a partir de 2009,
-        mas
-        só ganhou mercado no final de 2012 com o surgimento dos grandes
-         navegadores compatíveis."
-         classes={40}
+            title={curso.title} 
+            description={curso.description} 
+            classes={aulas.length}
           />
+          
           <ConteudoDasAulas
             classgroups={[
               {
-                cursoId: "123",
+                cursoId: curso.id,
                 title: "Conteúdo do curso",
-                classes: [
-                  {
-                    id: "234",
-                    title:
-                      "Curso de HTML5 - 00 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
-                    id: "235",
-                    title:
-                      "Curso de HTML5 - 01 - História da Internet - by Gustavo Guanabara",
-                  },
-                ],
+                
+                classes: aulas.map((aula) => ({
+                  id: aula.videoId,
+                  title: aula.title, 
+                })),
               },
             ]}
           />
         </div>
+
       </div>
     </>
   );
