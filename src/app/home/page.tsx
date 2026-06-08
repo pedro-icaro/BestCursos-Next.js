@@ -12,19 +12,9 @@ export default async function home() {
   return (
     <>
       <div>
-        <ContinuarCurso />
-        <h1 className="font-bold text-3xl p-1">Mais Relevantes</h1>
-        <Section
-          items={courses.map((course) => ({
-            title: course.title,
-            image: course.image,
-            href: `/home/${course.id}`,
-            description: course.description,
-          }))}
-        />
-        
-        <h1 className="font-bold text-3xl p-3">Recomendados</h1>
-        
+        <div className=" flex flex-col gap-2">
+          <ContinuarCurso />
+          <h1 className="font-bold text-3xl p-1">Mais Relevantes</h1>
           <Section
             items={courses.map((course) => ({
               title: course.title,
@@ -33,7 +23,18 @@ export default async function home() {
               description: course.description,
             }))}
           />
-        
+        </div>
+
+        <h1 className="font-bold text-3xl p-3">Recomendados</h1>
+
+        <Section
+          items={courses.map((course) => ({
+            title: course.title,
+            image: course.image,
+            href: `/home/${course.id}`,
+            description: course.description,
+          }))}
+        />
       </div>
     </>
   );

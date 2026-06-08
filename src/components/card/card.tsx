@@ -13,7 +13,7 @@ export default function card({ title, description, image ,href }: propscards) {
     <>
       <Link href={href}>
         <div
-          className=" hover:bg-olive-200 transition-all w-80 md:w-100 
+          className=" hover:bg-olive-100 transition-all w-80 md:w-100 
          duration-200 hover:mt-[-2] ease-in-out p-1.5 rounded-2xl line-clamp-5"
         >
           <Image

@@ -1,122 +1,66 @@
 "use client";
 
 import Link from "next/link";
-import {
-  
-  FaCode,
-  FaCss3Alt,
-  FaHtml5,
-  FaReact,
-
-} from "react-icons/fa";
-import { CgHome } from "react-icons/cg";
-import { IoLogoFigma } from "react-icons/io5";
 import { usePathname } from "next/navigation";
+import { CgHome } from "react-icons/cg";
+import { FaCode } from "react-icons/fa";
+import { FiBook, FiMap, FiAward, FiSettings } from "react-icons/fi";
 import { IoMdTrendingUp } from "react-icons/io";
-import { DiJavascript } from "react-icons/di";
+
+const menuPrincipal = [
+  { nome: "Início", rota: "/home", icone: CgHome },
+  { nome: "Meus Cursos", rota: "/meus-cursos", icone: FiBook },
+  { nome: "Trilhas", rota: "/trilhas", icone: FiMap },
+  { nome: "Cursos concluidos", rota: "/cursos-concluidos", icone: FiAward },
+  { nome: "Apoio ao projeto", rota: "/apoio-ao-projeto", icone: IoMdTrendingUp },
+];
 
 export default function Navbar() {
-  const rota = usePathname();
+  const rotaAtual = usePathname();
 
   return (
-    <>
-      <div className="hidden md:block">
-        <a
-          href="/components/home"
-          className="flex flex-col mt-4 justify-center items-center"
-        >
-          <FaCode size={40} />
-          <h1 className=" font-semibold">DevPro</h1>
-        </a>
-      </div><br /><br /><br /><br />
-      <div className="hidden md:block">
-    <nav className="flex md:flex-col gap-5  flex-none items-center justify-center min-h-[70%]">
-
-        <li
-          className={
-            rota === "/html5"
-              ? "bg-olive-300 flex items-center p-3 gap-2 w-[50] rounded-full"
-              : "flex items-center gap-2 p-1 hover:ml-[7] transition-[10s] text-lg"
-          }
-        ><span>
-          <Link href="/html5">
-            {" "}
-            <FaHtml5 size={26} />
-            
-          </Link>
-          </span>
-        </li>
-        <li
-          className={
-            rota === "/css3"
-              ? "bg-olive-300 flex items-center p-3 gap-2  w-[50] rounded-full "
-              : "flex items-center p-1 gap-2 hover:ml-[7] transition-[10s] text-lg"
-          }
-        ><span>
-          <Link href="/css3">
-            <FaCss3Alt size={26} />
-          </Link></span>
-        </li>
-        <li
-          className={
-            rota === "/javascriptt"
-              ? "bg-olive-300 flex items-center p-3 gap-2  w-[50] rounded-full "
-              : "flex items-center p-1 gap-2 hover:ml-[7] transition-[10s] text-lg"
-          }
-        ><span>
-          <Link href="/javascriptt">
-            <DiJavascript size={28} />
-          </Link></span>
-        </li>
-        <li
-          className={
-            rota === "/home"
-              ? "bg-olive-300 flex items-center p-3 rounded-full w-[50]"
-              : "gap-2 p-1 flex items-center hover:ml-[7] transition-[10s] text-lg"
-          }
-        ><span>
-          <Link href="/home">
-            <CgHome size={26} />
-          </Link></span>
-        </li>        
-        <li
-          className={
-            rota === "/figma"
-              ? "bg-olive-300 flex items-center p-3 gap-2  w-[50] rounded-full "
-              : "flex items-center p-1 gap-2 hover:ml-[7] transition-[10s] text-lg"
-          }
-        ><span>
-          <Link href="/figma">
-            <IoLogoFigma size={26} />
-          </Link></span>
-        </li>
-        <li
-          className={
-            rota === "/react"
-              ? "bg-olive-300 flex items-center p-3 gap-2  w-[50] rounded-full "
-              : "flex items-center p-1 gap-2 hover:ml-[7] transition-[10s] text-lg"
-          }
-        ><span>
-
-        
-          <Link href="/react">
-            <FaReact size={26} />
-          </Link></span>
-        </li>
-        <li
-          className={
-            rota === "/src/pages/apoie-o-projeto"
-              ? "bg-olive-300 flex items-center p-3 gap-2  w-[50] rounded-full "
-              : "flex items-center p-1 gap-2 hover:ml-[7] transition-[10s] text-lg"
-          }
-        ><span>
-          <Link href="/src/pages/apoie-o-projeto">
-            <IoMdTrendingUp size={28}/> 
-          </Link></span>
-        </li>
-      </nav>
+    <aside className="hidden md:flex flex-col h-screen py-8 bg-white items-center justify-between min-w-[80px] border-r dark:border-gray-200">
+      <div className="flex flex-col items-center">
+        <Link href="/home" className="flex flex-col justify-center items-center group">
+          <FaCode size={36} className="group-hover:scale-110 transition-transform duration-300" />
+          <h1 className="font-semibold mt-1">DevPro</h1>
+        </Link>
       </div>
-  
-    </>
+      <nav className="flex flex-col w-full flex-1 mt-10">
+        <ul className="flex flex-col gap-6 w-full items-center">
+          {menuPrincipal.map((item) => {
+            const Icone = item.icone;
+            const estaAtivo = rotaAtual === item.rota;
+
+            return (
+              <li key={item.rota} className="flex justify-center">
+                <Link
+                  href={item.rota}
+                  title={item.nome}
+                  className={`
+                    flex items-center justify-center p-3 rounded-full transition-all duration-300
+                    ${estaAtivo 
+                      ? " bg-olive-200"
+                      : "hover:bg-gray-100 hover:text-gray-900 hover:scale-110"}
+                  `}
+                >
+                  <Icone size={26} />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+      <div className="flex flex-col items-center w-full pb-4">
+        <Link
+          href="/configuracoes"
+          title="Configurações"
+          className="flex items-center justify-center p-3 rounded-full hover:bg-gray-100 hover:text-gray-900 hover:rotate-90 transition-all duration-300"
+        >
+          <FiSettings size={26} />
+        </Link>
+      </div>
+
+    </aside>
   );
 }

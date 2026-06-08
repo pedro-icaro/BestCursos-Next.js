@@ -1,81 +1,72 @@
 "use client";
 
-import { FaSearch, FaUserCircle } from "react-icons/fa";
-import Logo from "../../components/logo/logo";
-import { IoMdMenu } from "react-icons/io";
 import { useState } from "react";
-import SidebarMobile from "../sidebar-mobile/sidebar-mobile";
 import Link from "next/link";
+import { FaSearch, FaUserCircle } from "react-icons/fa";
+import { IoMdMenu } from "react-icons/io";
+import Logo from "../../components/logo/logo";
+import SidebarMobile from "../sidebar-mobile/sidebar-mobile";
 
 export default function Header() {
-  const [botao, setbotao] = useState(false);
-  return (
-    <>
-      <div className="bg-olive-200 flex p-5 items-center gap-3 h-20 justify-center">
-        <div className="block md:hidden">
-          <button onClick={() => setbotao(!botao)}>
-            <IoMdMenu size={25} />
-          </button>
-        </div>
+  const [menuMobileAberto, setMenuMobileAberto] = useState(false);
 
-        <div className=" block md:hidden">
+  return (
+    <header className="w-full flex flex-col transition-all">
+      <div className="flex items-center justify-between px-6 h-20 w-full">
+        <div className="flex items-center gap-4 md:hidden">
+          <button 
+            onClick={() => setMenuMobileAberto(!menuMobileAberto)}
+            className="p-2 text-olive-600 hover:bg-olive-100 rounded-full transition-colors"
+            aria-label="Abrir menu"
+          >
+            <IoMdMenu size={28} />
+          </button>
           <Logo />
         </div>
-
-        {botao === true && <SidebarMobile />}
-
-        <div className="hidden md:block">
-          <div
-            className="flex items-center border-2 rounded-[15px]
-                border-olive-300 gap-5 p-1 md:w-[500] mt-2"
-          >
-            <FaSearch
-              size="20px"
-              className="text-olive-600 flex items-center "
-            />
-
+        <div className="hidden md:flex flex-1 justify-center max-w-2xl px-4">
+          <div className="flex items-center w-full bg-gray-100 rounded-full px-4 py-2 border-2 border-transparent focus-within:border-olive-400 focus-within:bg-white transition-all duration-300">
+            <FaSearch className="text-gray-400 mr-3" size={18} />
             <input
               type="text"
-              placeholder="Pesquisa"
-              className=" outline-none w-full"
+              placeholder="Pesquisar cursos, aulas..."
+              className="bg-transparent outline-none w-full text-sm text-gray-700 placeholder-gray-400"
             />
           </div>
         </div>
-        <div className=" flex-1 flex gap-3 justify-end">
-          <Link href="/src/pages/perfil" className="flex items-center gap-2">
-            {" "}
-            <FaUserCircle size="40px"/>
-            <span className=" hidden md:block">User Name</span>
+        <div className="flex items-center justify-end md:flex-1">
+          <Link 
+            href="/perfil" 
+            className="flex items-center gap-3 p-2 rounded-full"
+          >
+            <div className="hidden md:flex flex-col items-end">
+              <span className="text-sm font-semibold text-gray-800">User Name</span>
+              <span className="text-xs text-olive-600 font-medium">Aluno</span>
+            </div>
+            <FaUserCircle size={38} className="text-gray-400" />
           </Link>
         </div>
       </div>
-      <div className="flex justify-center bg-olive-200 py-10 mt-[-30] rounded-b-[30] md:rounded-none md:py-5">
-        <div className="block md:hidden">
-          <div
-            className="flex items-center border-2 rounded-[15px]
-                border-olive-300 gap-5 p-1 w-95 "
-          >
-            <FaSearch
-              size="20px"
-              className="text-olive-600 flex items-center "
-            />
-
-            <input
-              type="text"
-              placeholder="Pesquisa"
-              className="outline-none"
-            />
-          </div>
+      <div className="md:hidden px-4 pb-4">
+        <div className="flex items-center w-full bg-gray-100 rounded-full px-4 py-2 border-2 border-transparent focus-within:border-olive-400 focus-within:bg-white transition-all duration-300">
+          <FaSearch className="text-gray-400 mr-3" size={18} />
+          <input
+            type="text"
+            placeholder="Pesquisar..."
+            className="bg-transparent outline-none w-full text-sm text-gray-700"
+          />
         </div>
       </div>
-      {botao === true && (
-        <div className="fixed right-0 top-0 w-41 h-full z-40">
-          <button
-            className="w-full h-full"
-            onClick={() => setbotao(false)}
-          ></button>
-        </div>
+      {menuMobileAberto && (
+        <>
+          <div 
+            className="fixed inset-0 bg-black/50 z-40 transition-opacity"
+            onClick={() => setMenuMobileAberto(false)}
+          />
+          <div className="fixed top-0 left-0 h-full z-50">
+            <SidebarMobile />
+          </div>
+        </>
       )}
-    </>
+    </header>
   );
 }

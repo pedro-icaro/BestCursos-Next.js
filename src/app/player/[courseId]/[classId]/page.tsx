@@ -1,6 +1,7 @@
 import PlayerClassDetails from "@/components/player/player-class-details/PlayerClassDetails";
 import PlayerPlaylist from "@/components/playlist/PlayerPlaylist";
 import { APIYoutube } from "@/shared/services/api-youtube";
+
 interface Props {
   params: Promise<{
     classId: string;
@@ -10,6 +11,8 @@ interface Props {
 
 export default async function PagePlayer({ params }: Props) {
   const { courseId, classId } = await params;
+  const videos = await APIYoutube.lessons.getByPlaylistId(courseId);
+  const aula = await APIYoutube.course.getById(classId)
  
 
   return (
@@ -22,32 +25,12 @@ export default async function PagePlayer({ params }: Props) {
             classGroups={[
               {
                 title: "Conteúdo",
-                classes: [
-                  {
-                    done: true,
-                    classId: "aula-01",
-                    title:
-                      "1-Curso de HTML5 - 00 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
-                    done: true,
-                    classId: "aula-02",
-                    title:
-                      "2-Curso de HTML5 - 01 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
+                classes: 
+                   videos.map((video) => ({
                     done: false,
-                    classId: "aula-03",
-                    title:
-                      "3-Curso de HTML5 - 02 - Site Completo - by Gustavo Guanabara",
-                  },
-                  {
-                    done: false,
-                    classId: "aula-04",
-                    title:
-                      "4-Curso de HTML5 - 03 - Site Completo - by Gustavo Guanabara",
-                  },
-                ],
+                    classId: video.videoId,
+                    title: video.title,
+                    }))
               },
             ]}
           />
