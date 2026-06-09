@@ -37,12 +37,18 @@ export default async function PagePlayer({ params }: Props) {
         <div className="w-full lg:flex-1 lg:overflow-x-auto">
           <PlayerClassDetails
             course={{
+              id:courseId,
               title: "Curso de HTML5 Completo e GRÁTIS",
               classes: 40,
               description:
                 "HTML5 é uma linguagem de marcação hipertexto utilizada para criar sites A versão 5 da linguagem foi homologada e lançada a partir de 2009, mas só ganhou mercado no final de 2012 com o surgimento dos grandes navegadores compatíveis.",
             }}
             classitem={{
+              videoId:"epDCjksKMok",
+              id:classId,
+              commentsCount:15,
+              likesCount:15,
+              viewsCount:15,
               description:
                 "Curso de HTML5 + CSS3 + JavaScript completamente gratuito. Aulas criadas pelo professor Gustavo Guanabara. \r\n\r\nDownload do pacote de arquivos para a criação do site disponível em http://cursoemvideo.com/cursos/curso-html5-gratis-completo/",
               title: "Curso de HTML5 Completo e GRÁTIS",

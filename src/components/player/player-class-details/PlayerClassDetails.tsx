@@ -5,16 +5,23 @@ import PlayerVideoPlayer from "./components/PlayerVideoPlayer";
 import Headercurso from "@/components/header-curso/header-curso";
 import PlayerClassHeader from "./components/PlayerClassHeader";
 import Comments from "./components/comments/comments";
+import { MdComment, MdThumbUp, MdVisibility } from "react-icons/md";
 
 interface PropsClassDetails {
   course: {
+    id: string;
     title: string;
     description: string;
     classes: number;
   };
   classitem: {
+    id: string;
+    viewsCount: number;
+    likesCount: number;
+    commentsCount: number;
     title: string;
     description: string;
+    videoId: string;
   };
 }
 
@@ -24,8 +31,27 @@ export default function PlayerClassDetails({
 }: PropsClassDetails) {
   return (
     <div className="flex-1 lg:overflow-auto w-full">
-      <div className="aspect-video w-full">
-        <PlayerVideoPlayer videoId="epDCjksKMok" />
+      <div className="flex flex-col gap-2">
+        <div className="aspect-video w-full">
+          <PlayerVideoPlayer videoId={classitem.videoId} />
+        </div>
+        <div className="flex gap-2 opacity-80">
+          <div className="flex gap-1 items-center">
+            <MdVisibility />
+            <span>{classitem.viewsCount}</span>
+            <span>vizualizações</span>
+          </div>
+          <div className="flex gap-1 items-center">
+            <MdThumbUp />
+            <span>{classitem.likesCount}</span>
+            <span>likes</span>
+          </div>
+          <div className="flex gap-1 items-center">
+            <MdComment/>
+            <span>{classitem.commentsCount}</span>
+            <span>comentarios</span>
+          </div>
+        </div>
       </div>
 
       <Tabs.Root defaultValue="class-details" className="px-2 py-4 w-full">
