@@ -20,7 +20,7 @@ export default function Compartilhar({title, content, children}: ComparProps){
 
     return(
         <DropdownMenu.Root>
-            <DropdownMenu.Trigger>
+            <DropdownMenu.Trigger asChild>
                  {children}
             </DropdownMenu.Trigger>
             <DropdownMenu.Portal>

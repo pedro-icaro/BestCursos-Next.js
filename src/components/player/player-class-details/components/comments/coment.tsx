@@ -1,12 +1,31 @@
+import { format, parseISO } from "date-fns";
 import Image from "next/image";
-import { MdArrowDropDown, MdThumbUp } from "react-icons/md";
+import { useMemo, useState } from "react";
+import { MdArrowDropDown, MdArrowDropUp, MdThumbUp } from "react-icons/md";
 
-export default function Comment() {
+export interface PropsComment {
+  content: string;
+  likeCount: number;
+  publishDate: string;
+  author: {
+    image: string;
+    userName: string;
+  };
+  replies?: PropsComment[];
+}
+export default function Comment({content,likeCount,author,publishDate,replies}:PropsComment) {
+  const [respostacomentarios, setrespostacomentarios] = useState(false);
+
+const date = useMemo(() => {
+  const dateAsDate = parseISO(publishDate);
+  return format(dateAsDate, "dd/MM/yyyy 'às' HH:mm");
+}, [publishDate]);
+
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <div className="flex gap-2 items-start">
         <Image
-          src="https://i.pinimg.com/736x/c8/7e/2f/c87e2f90bce2cb3382ced275fe75d8ef.jpg"
+          src={author.image}
           alt="imagem de perfil"
           width={50}
           height={50}
@@ -15,25 +34,34 @@ export default function Comment() {
         />
         <div className=" bg-olive-300 flex-1 flex flex-col gap-4 p-2 rounded-[4]">
           <div className="flex gap-2 items-center">
-            <span className="font-bold">user name</span>
+            <span className="font-bold">{author.userName}</span>
             <span className="font-semibold text-xs text-olive-800 opacity-50">
-              12/12/2004 ás 19:20
+              {date}
             </span>
           </div>
-          <div>coment</div>
+          <div>{content}</div>
           <div className="flex gap-2">
             <div className="flex items-center gap-2">
-              <MdThumbUp /> <span>5</span>
+              <MdThumbUp /> <span>{likeCount}</span>
             </div>
-            <button className="flex items-center font-semibold" >
-              <MdArrowDropDown />
-              <span>Ver respostas (5)</span>{" "}
+            <button
+              className="flex items-center font-semibold"
+              onClick={() => setrespostacomentarios(!respostacomentarios)}
+            >
+              {respostacomentarios ? <MdArrowDropUp /> : <MdArrowDropDown />}
+              <span>
+                {respostacomentarios ? "Ocutar" : "Ver"} respostas ({replies?.length})
+              </span>{" "}
             </button>
           </div>
         </div>
-
-        
       </div>
+      <div className="pl-12">
+        {respostacomentarios && replies?.map(reply => (
+                  <Comment key={reply.publishDate} {...reply}/>
+        ))}
+
+        </div>
     </div>
   );
 }

@@ -1,14 +1,17 @@
-import Comment from "./coment";
+import Comment, { PropsComment } from "./coment";
 
-export default function Comments() {
+interface PropsComments {
+  comments: PropsComment[];
+}
+export default function Comments({ comments }: PropsComments) {
   return (
     <div className="flex gap-2 flex-col">
-      <Comment />
-      <Comment />
-      <Comment />
-      <Comment />
-      <Comment />
-      <Comment />
+      {comments.map((comment) => (
+        <Comment
+        key={comment.publishDate}
+          {...comment}
+        />
+      ))}
     </div>
   );
 }
