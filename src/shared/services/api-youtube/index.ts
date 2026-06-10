@@ -68,7 +68,7 @@ export const APIYoutube = {
     getByPlaylistId: async (playlistId: string) => {
       const { data } = await YoutubeAPIClient.playlistItems.list(
         {
-          part: ["snippet"],
+          part: ["snippet",],
           playlistId: playlistId,
           maxResults: 50,
         },

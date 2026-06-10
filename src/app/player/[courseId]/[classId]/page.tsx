@@ -12,7 +12,8 @@ interface Props {
 export default async function PagePlayer({ params }: Props) {
   const { courseId, classId } = await params;
   const videos = await APIYoutube.lessons.getByPlaylistId(courseId);
-  const aula = await APIYoutube.course.getById(classId);
+  const cursoDetails = await APIYoutube.course.getById(courseId);
+  const aulaAtual = videos.find((video) => video.videoId === classId) || videos[0];
 
   return (
     <main className="flex flex-col gap-4 lg:gap-2 h-auto lg:h-50 p-2 lg:p-0">
@@ -33,25 +34,22 @@ export default async function PagePlayer({ params }: Props) {
             ]}
           />
         </div>
-
         <div className="w-full lg:flex-1 lg:overflow-x-auto">
           <PlayerClassDetails
             course={{
-              id:courseId,
-              title: "Curso de HTML5 Completo e GRÁTIS",
-              classes: 40,
-              description:
-                "HTML5 é uma linguagem de marcação hipertexto utilizada para criar sites A versão 5 da linguagem foi homologada e lançada a partir de 2009, mas só ganhou mercado no final de 2012 com o surgimento dos grandes navegadores compatíveis.",
+              id: courseId,
+              title: cursoDetails?.title || "",
+              classes: videos.length, 
+              description: cursoDetails?.description || ""
             }}
             classitem={{
-              videoId:"epDCjksKMok",
-              id:classId,
-              commentsCount:15,
-              likesCount:15,
-              viewsCount:15,
-              description:
-                "Curso de HTML5 + CSS3 + JavaScript completamente gratuito. Aulas criadas pelo professor Gustavo Guanabara. \r\n\r\nDownload do pacote de arquivos para a criação do site disponível em http://cursoemvideo.com/cursos/curso-html5-gratis-completo/",
-              title: "Curso de HTML5 Completo e GRÁTIS",
+              videoId: aulaAtual?.videoId || classId, 
+              id: classId,           
+              commentsCount: 15,
+              likesCount: 15,
+              viewsCount: 15,
+              title: aulaAtual?.title || "",
+              description: aulaAtual?.description || ""
             }}
           />
         </div>
