@@ -14,6 +14,7 @@ export default async function PagePlayer({ params }: Props) {
   const videos = await APIYoutube.lessons.getByPlaylistId(courseId);
   const cursoDetails = await APIYoutube.course.getById(courseId);
   const aulaAtual = videos.find((video) => video.videoId === classId) || videos[0];
+  const staticsvideo = await APIYoutube.video.getStatsById(classId)
 
   return (
     <main className="flex flex-col gap-4 lg:gap-2 h-auto lg:h-50 p-2 lg:p-0">
@@ -45,9 +46,9 @@ export default async function PagePlayer({ params }: Props) {
             classitem={{
               videoId: aulaAtual?.videoId || classId, 
               id: classId,           
-              commentsCount: 15,
-              likesCount: 15,
-              viewsCount: 15,
+              commentsCount: staticsvideo.commentsCount,
+              likesCount: staticsvideo.likesCount,
+              viewsCount: staticsvideo.viewsCount,
               title: aulaAtual?.title || "",
               description: aulaAtual?.description || ""
             }}

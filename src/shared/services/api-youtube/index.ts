@@ -93,4 +93,28 @@ export const APIYoutube = {
       return lessons;
     },
   },
+
+  video: {
+    getStatsById: async (videoId: string) => {
+      const { data } = await YoutubeAPIClient.videos.list(
+        {
+          part: ["statistics"], 
+          id: [videoId],
+        },
+        {
+          fetchImplementation: fetchWithNextConfig({
+            revalidate: 60 * 60 * 24, 
+          }),
+        }
+      );
+
+      const stats = data.items?.[0]?.statistics;
+      
+      return {
+        viewsCount: Number(stats?.viewCount || 0),
+        likesCount: Number(stats?.likeCount || 0),
+        commentsCount: Number(stats?.commentCount || 0),
+      };
+    },
+  },
 };
