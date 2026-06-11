@@ -9,12 +9,34 @@ interface Props {
   }>;
 }
 
+export async function generateStaticParams() {
+  const courses = await APIYoutube.course.getAll();
+  const rotasEstaticas = [];
+
+  for (const course of courses) {
+    const lessons = await APIYoutube.lessons.getByPlaylistId(course.id);
+    for (const lesson of lessons) {
+      rotasEstaticas.push({
+        courseId: course.id,
+        classId: lesson.videoId,
+      });
+    }
+  }
+
+  return rotasEstaticas;
+}
+
 export default async function PagePlayer({ params }: Props) {
   const { courseId, classId } = await params;
-  const videos = await APIYoutube.lessons.getByPlaylistId(courseId);
-  const cursoDetails = await APIYoutube.course.getById(courseId);
+
+  const [videos, cursoDetails, staticsvideo, listaDeComentarios] = await Promise.all([
+    APIYoutube.lessons.getByPlaylistId(courseId),
+    APIYoutube.course.getById(courseId),
+    APIYoutube.video.getStatsById(classId),
+    APIYoutube.video.getComments(classId)
+  ]);
+
   const aulaAtual = videos.find((video) => video.videoId === classId) || videos[0];
-  const staticsvideo = await APIYoutube.video.getStatsById(classId)
 
   return (
     <main className="flex flex-col gap-4 lg:gap-2 h-auto lg:h-50 p-2 lg:p-0">
@@ -40,18 +62,19 @@ export default async function PagePlayer({ params }: Props) {
             course={{
               id: courseId,
               title: cursoDetails?.title || "",
-              classes: videos.length, 
-              description: cursoDetails?.description || ""
+              classes: videos.length,
+              description: cursoDetails?.description || "",
             }}
             classitem={{
-              videoId: aulaAtual?.videoId || classId, 
-              id: classId,           
-              commentsCount: staticsvideo.commentsCount,
-              likesCount: staticsvideo.likesCount,
-              viewsCount: staticsvideo.viewsCount,
+              id: classId,
+              videoId: aulaAtual?.videoId || "",
               title: aulaAtual?.title || "",
-              description: aulaAtual?.description || ""
+              description: aulaAtual?.description || "",
+              viewsCount: staticsvideo.viewsCount,
+              likesCount: staticsvideo.likesCount,
+              commentsCount: staticsvideo.commentsCount,
             }}
+            comments={listaDeComentarios}
           />
         </div>
       </div>

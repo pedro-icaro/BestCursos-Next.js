@@ -6,6 +6,7 @@ import Headercurso from "@/components/header-curso/header-curso";
 import PlayerClassHeader from "./components/PlayerClassHeader";
 import Comments from "./components/comments/comments";
 import { MdComment, MdThumbUp, MdVisibility } from "react-icons/md";
+import { PropsComment } from "./components/comments/coment";
 
 interface PropsClassDetails {
   course: {
@@ -23,11 +24,13 @@ interface PropsClassDetails {
     description: string;
     videoId: string;
   };
+  comments: PropsComment[];
 }
 
 export default function PlayerClassDetails({
   course,
   classitem,
+  comments
 }: PropsClassDetails) {
   return (
     <div className="flex-1 lg:overflow-auto w-full">
@@ -89,31 +92,7 @@ export default function PlayerClassDetails({
 
         <Tabs.Content value="class-comments">
           <Comments
-            comments={[
-              {
-                author: {
-                  image:
-                    "https://i.pinimg.com/736x/c8/7e/2f/c87e2f90bce2cb3382ced275fe75d8ef.jpg",
-                  userName: "@LucasSousaDev",
-                },
-                content: "My comment",
-                likeCount: 5,
-                publishDate: "2024-09-09T20:16:37Z",
-                replies: [
-                  {
-                    likeCount: 15,
-                    content: "My reply",
-                    replies: undefined,
-                    publishDate: "2024-09-09T20:16:37Z",
-                    author: {
-                      userName: "@LucasSouzaDev",
-                      image:
-                        "https://i.pinimg.com/736x/c8/7e/2f/c87e2f90bce2cb3382ced275fe75d8ef.jpg",
-                    },
-                  },
-                ],
-              },
-            ]}
+            comments={comments}
           />
         </Tabs.Content>
 
