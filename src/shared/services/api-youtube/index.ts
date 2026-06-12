@@ -122,21 +122,32 @@ export const APIYoutube = {
       try {
         const { data } = await YoutubeAPIClient.commentThreads.list(
           {
-            part: ["snippet"],
+            // 1. Adicionamos "replies" aqui para a API nos enviar as respostas
+            part: ["snippet", "replies"],
             videoId: videoId,
-            maxResults: 50, // Você pode alterar para trazer mais ou menos comentários
-            order: "relevance", // Pode ser "time" (mais recentes) ou "relevance" (mais relevantes)
+            maxResults: 50,
+            order: "relevance",
           },
           {
             fetchImplementation: fetchWithNextConfig({
-              revalidate: 60 * 60 * 2, // Revalidando a cada 2 horas (comentários mudam mais rápido)
+              revalidate: 60 * 60 * 24,
             }),
           }
         );
 
-        // O YouTube guarda os dados dentro de snippet.topLevelComment.snippet
         const comments = (data.items || []).map((item) => {
           const commentData = item.snippet?.topLevelComment?.snippet;
+
+          // 2. Mapeamos as respostas (se existirem) para o mesmo formato do comentário pai
+          const replies = (item.replies?.comments || []).map((reply) => ({
+            content: reply.snippet?.textDisplay || "",
+            likeCount: Number(reply.snippet?.likeCount || 0),
+            publishDate: reply.snippet?.publishedAt || "",
+            author: {
+              image: reply.snippet?.authorProfileImageUrl || "",
+              userName: reply.snippet?.authorDisplayName || "Usuário Desconhecido",
+            },
+          }));
 
           return {
             content: commentData?.textDisplay || "",
@@ -146,13 +157,13 @@ export const APIYoutube = {
               image: commentData?.authorProfileImageUrl || "",
               userName: commentData?.authorDisplayName || "Usuário Desconhecido",
             },
+            // 3. Adicionamos a lista de respostas ao objeto do comentário pai
+            replies: replies,
           };
         });
 
         return comments;
       } catch (error) {
-        // Se os comentários estiverem desativados no vídeo, a API da erro. 
-        // Esse try/catch previne que seu site saia do ar por causa disso e retorna uma lista vazia.
         return [];
       }
     },
