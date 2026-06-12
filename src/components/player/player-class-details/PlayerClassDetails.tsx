@@ -7,6 +7,8 @@ import PlayerClassHeader from "./components/PlayerClassHeader";
 import Comments from "./components/comments/comments";
 import { MdComment, MdThumbUp, MdVisibility } from "react-icons/md";
 import { PropsComment } from "./components/comments/coment";
+import { useEffect } from "react";
+import { LocalStorage } from "@/shared/services/local-storage";
 
 interface PropsClassDetails {
   course: {
@@ -32,6 +34,16 @@ export default function PlayerClassDetails({
   classitem,
   comments
 }: PropsClassDetails) {
+
+  useEffect(() => {
+  LocalStorage.ContinuarCurso.set({
+    classId: classitem.id,
+    courseId: course.id,
+    className: classitem.title,
+    courseName: course.title,
+  })
+}, [course.id, course.title, classitem.id, classitem.title])
+
   return (
     <div className="flex-1 lg:overflow-auto w-full">
       <div className="flex flex-col gap-2">

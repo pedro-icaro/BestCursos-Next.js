@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Section from "../../components/section/section";
-import ContinuarCurso from "../../components/continuarcurso/continuarcurso";
 import { APIYoutube } from "@/shared/services/api-youtube";
+import { Continuarcurso } from "@/components/continuarcurso/continuarcurso";
 
 export const metadata: Metadata = {
   title: "Dev-Pro",
@@ -13,7 +13,7 @@ export default async function home() {
     <>
       <div>
         <div className=" flex flex-col gap-2">
-          <ContinuarCurso />
+          <Continuarcurso />
           <h1 className="font-bold text-3xl p-1">Mais Relevantes</h1>
           <Section
             items={courses.map((course) => ({
