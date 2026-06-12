@@ -9,9 +9,9 @@ import { IoMdTrendingUp } from "react-icons/io";
 
 const menuPrincipal = [
   { nome: "Início", rota: "/home", icone: CgHome },
-  { nome: "Meus Cursos", rota: "/meus-cursos", icone: FiBook },
+  { nome: "Cursos", rota: "/cursos", icone: FiBook },
   { nome: "Trilhas", rota: "/trilhas", icone: FiMap },
-  { nome: "Cursos concluidos", rota: "/cursos-concluidos", icone: FiAward },
+  { nome: "Favoritos", rota: "/meus-cursos", icone: FiAward },
   { nome: "Apoio ao projeto", rota: "/apoio-ao-projeto", icone: IoMdTrendingUp },
 ];
 

@@ -8,7 +8,7 @@ interface propscards {
   href:string;
 }
 
-export default function card({ title, description, image ,href }: propscards) {
+export default function Card({ title, description, image ,href }: propscards) {
   return (
     <>
       <Link href={href}>

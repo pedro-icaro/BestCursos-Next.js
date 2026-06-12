@@ -10,7 +10,7 @@ export default function Section({ items }: PropsSection) {
     <section>
       <div className="flex gap-3 relative overflow-hidden overflow-x-auto -mr-4">
         {items.map((item, index) => (
-          <div key={index}>
+          <div key={index} className="flex">
             <Card
               image={item.image}
               description={item.description}

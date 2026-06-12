@@ -7,12 +7,13 @@ import { FaSearch, FaUserCircle } from "react-icons/fa";
 import { IoMdMenu } from "react-icons/io";
 import Logo from "../../components/logo/logo";
 import SidebarMobile from "../sidebar-mobile/sidebar-mobile";
+import { LocalStorage } from "@/shared/services/local-storage";
 
 export default function Header() {
   const [menuMobileAberto, setMenuMobileAberto] = useState(false);
   const [busca, setBusca] = useState("");
   const router = useRouter();
-
+  const [nome, setNome] = useState(() => LocalStorage.Usuario.getNome());
   const handleSearch = () => {
     if (busca.trim()) {
       router.push(`/pesquisa?q=${encodeURIComponent(busca.trim())}`);
@@ -61,7 +62,7 @@ export default function Header() {
         <div className="flex items-center justify-end md:flex-1">
           <Link href="/perfil" className="flex items-center gap-3 p-2 rounded-full">
             <div className="hidden md:flex flex-col items-end">
-              <span className="text-sm font-semibold text-gray-800">User Name</span>
+              <span className="text-sm font-semibold text-gray-800">{nome || "user name"}</span>
               <span className="text-xs text-olive-600 font-medium">Aluno</span>
             </div>
             <FaUserCircle size={38} className="text-gray-400" />
@@ -69,7 +70,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* input mobile */}
+  
       <div className="md:hidden px-4 pb-4">
         <div className="flex items-center w-full bg-gray-100 rounded-full px-4 py-2 border-2 border-transparent focus-within:border-olive-400 focus-within:bg-white transition-all duration-300">
           <FaSearch className="text-gray-400 mr-3" size={18} onClick={handleSearch} />
