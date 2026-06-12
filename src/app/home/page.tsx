@@ -1,3 +1,4 @@
+
 import { Metadata } from "next";
 import Section from "../../components/section/section";
 import { APIYoutube } from "@/shared/services/api-youtube";
@@ -6,9 +7,9 @@ import { Continuarcurso } from "@/components/continuarcurso/continuarcurso";
 export const metadata: Metadata = {
   title: "Dev-Pro",
 };
+
 export default async function home() {
   const courses = await APIYoutube.course.getAll();
-
   return (
     <>
       <div>

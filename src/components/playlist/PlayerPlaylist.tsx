@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import GrupoAulas, { PropsGrupoAulas } from "../player/grupo-aulas";
+import { LocalStorage } from "@/shared/services/local-storage"; 
 
 interface PropsPlaylist {
   classGroups: Pick<PropsGrupoAulas, 'classes' | 'title'>[];
@@ -14,18 +15,18 @@ export default function PlayerPlaylist({ classGroups, PlayClassId, PlayCourseId 
   const router = useRouter();
 
   const [aulasConcluidas, setAulasConcluidas] = useState<string[]>(() =>
-    classGroups
-      .flatMap(group => group.classes)
-      .filter(classItem => classItem.done)
-      .map(classItem => classItem.classId)
+    LocalStorage.AulasConcluidas.get(PlayCourseId) 
   );
 
   const handleCheck = (classId: string) => {
     setAulasConcluidas(prev => {
-      if (prev.includes(classId)) {
-        return prev.filter(id => id !== classId); 
-      }
-      return [...prev, classId]; 
+      const novas = prev.includes(classId)
+        ? prev.filter(id => id !== classId)
+        : [...prev, classId];
+
+      LocalStorage.AulasConcluidas.save(PlayCourseId, novas); 
+
+      return novas;
     });
   };
 

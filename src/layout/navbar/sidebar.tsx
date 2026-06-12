@@ -51,15 +51,6 @@ export default function Navbar() {
           })}
         </ul>
       </nav>
-      <div className="flex flex-col items-center w-full pb-4">
-        <Link
-          href="/configuracoes"
-          title="Configurações"
-          className="flex items-center justify-center p-3 rounded-full hover:bg-gray-100 hover:text-gray-900 hover:rotate-90 transition-all duration-300"
-        >
-          <FiSettings size={26} />
-        </Link>
-      </div>
 
     </aside>
   );
