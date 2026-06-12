@@ -122,7 +122,6 @@ export const APIYoutube = {
       try {
         const { data } = await YoutubeAPIClient.commentThreads.list(
           {
-            // 1. Adicionamos "replies" aqui para a API nos enviar as respostas
             part: ["snippet", "replies"],
             videoId: videoId,
             maxResults: 50,
@@ -138,7 +137,6 @@ export const APIYoutube = {
         const comments = (data.items || []).map((item) => {
           const commentData = item.snippet?.topLevelComment?.snippet;
 
-          // 2. Mapeamos as respostas (se existirem) para o mesmo formato do comentário pai
           const replies = (item.replies?.comments || []).map((reply) => ({
             content: reply.snippet?.textDisplay || "",
             likeCount: Number(reply.snippet?.likeCount || 0),
@@ -157,7 +155,6 @@ export const APIYoutube = {
               image: commentData?.authorProfileImageUrl || "",
               userName: commentData?.authorDisplayName || "Usuário Desconhecido",
             },
-            // 3. Adicionamos a lista de respostas ao objeto do comentário pai
             replies: replies,
           };
         });
