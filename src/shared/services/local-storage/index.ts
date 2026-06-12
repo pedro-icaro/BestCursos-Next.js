@@ -27,5 +27,6 @@ export const LocalStorage = {
                 return;
             }
         }
-    }
+    },
+    
 }

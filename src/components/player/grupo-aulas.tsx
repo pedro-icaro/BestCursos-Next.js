@@ -31,15 +31,15 @@ export default function GrupoAulas({classes,title,PlayClassId,onPlay,onCheck}: P
       </button>
       <ol data-estado={estado} 
       className="flex flex-col data-[estado=false]:hidden">
-        {classes.map(classItem => (
-          <li key={classItem.title}>
-          <PlayerAula 
-          {...classItem}
-          play={(classItem.classId === PlayClassId)}
-          onCheck={() => onCheck(classItem.classId)}
-          onPlay={() => onPlay(classItem.classId)}
-          />
-        </li>
+       {classes.map(classItem => (
+  <li key={classItem.classId}>
+    <PlayerAula
+      {...classItem}
+      play={classItem.classId === PlayClassId}
+      onCheck={() => onCheck(classItem.classId)}
+      onPlay={() => onPlay(classItem.classId)}
+    />
+  </li>
         ))}
       </ol>
     </div>
