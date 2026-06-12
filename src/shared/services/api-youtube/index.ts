@@ -1,86 +1,59 @@
 import { youtube } from "@googleapis/youtube";
 import { PLAYLIST_IDS } from "./courses-config";
 
-const fetchWithNextConfig = (
-  nextConfig?: NextFetchRequestConfig,
-): typeof fetch => {
-  return (input, params = {}) => {
-    return fetch(input, { ...params, next: nextConfig });
-  };
+const CACHE_4_DAYS = 60 * 60 * 96;
+const CACHE_1_DAY  = 60 * 60 * 24;
+
+export type Course = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
 };
+
+export type Lesson = {
+  id: string;
+  videoId: string;
+  title: string;
+  description: string;
+  image: string;
+};
+
+export type VideoStats = {
+  viewsCount: number;
+  likesCount: number;
+  commentsCount: number;
+};
+
+export type Comment = {
+  content: string;
+  likeCount: number;
+  publishDate: string;
+  author: { image: string; userName: string };
+  replies: Omit<Comment, "replies">[];
+};
+
+const makeFetch = (revalidate: number): typeof fetch =>
+  (input, params = {}) =>
+    fetch(input, { ...params, next: { revalidate } });
 
 const YoutubeAPIClient = youtube({
   version: "v3",
   auth: process.env.YOUTUBE_API_KEY,
-  fetchImplementation: fetchWithNextConfig(),
 });
 
-export const APIYoutube = {
-  course: {
-    getAll: async () => {
-      const { data } = await YoutubeAPIClient.playlists.list(
-        {
-          part: ["snippet"],
-          id: PLAYLIST_IDS,
-        },
-        {
-          fetchImplementation: fetchWithNextConfig({
-            revalidate: 60 * 60 * 96,
-          }),
-        },
-      );
+async function fetchAllPlaylistItems(playlistId: string): Promise<Lesson[]> {
+  const lessons: Lesson[] = [];
+  let pageToken: string | undefined;
 
-      const courses = (data.items || []).map((item) => ({
-        id: item.id || "",
-        title: item.snippet?.title || "",
-        description: item.snippet?.description || "",
-        image: item.snippet?.thumbnails?.maxres?.url || "",
-      }));
+  do {
+    const { data } = await YoutubeAPIClient.playlistItems.list(
+      { part: ["snippet"], playlistId, maxResults: 50, pageToken },
+      { fetchImplementation: makeFetch(CACHE_1_DAY) },
+    );
 
-      return courses;
-    },
-    getById: async (playlistId: string) => {
-      const { data } = await YoutubeAPIClient.playlists.list(
-        {
-          part: ["snippet"],
-          id: [playlistId],
-        },
-        {
-          fetchImplementation: fetchWithNextConfig({
-            revalidate: 60 * 60 * 96,
-          }),
-        },
-      );
-
-      const item = data.items?.[0];
-
-      if (!item) return null;
-
-      const x = {
-        id: item.id || "",
-        title: item.snippet?.title || "",
-        description: item.snippet?.description || "",
-        image: item.snippet?.thumbnails?.maxres?.url || "",
-      };
-      return x
-    },
-  },
-  lessons: {
-    getByPlaylistId: async (playlistId: string) => {
-      const { data } = await YoutubeAPIClient.playlistItems.list(
-        {
-          part: ["snippet",],
-          playlistId: playlistId,
-          maxResults: 50,
-        },
-        {
-          fetchImplementation: fetchWithNextConfig({
-            revalidate: 60 * 60 * 24,
-          }),
-        },
-      );
-
-      const lessons = (data.items || []).map((item) => ({
+    for (const item of data.items || []) {
+      lessons.push({
         id: item.id || "",
         videoId: item.snippet?.resourceId?.videoId || "",
         title: item.snippet?.title || "",
@@ -89,82 +62,106 @@ export const APIYoutube = {
           item.snippet?.thumbnails?.maxres?.url ||
           item.snippet?.thumbnails?.high?.url ||
           "",
-      }));
+      });
+    }
 
-      return lessons;
+    pageToken = data.nextPageToken ?? undefined;
+  } while (pageToken);
+
+  return lessons;
+}
+
+export const APIYoutube = {
+  course: {
+    getAll: async (): Promise<Course[]> => {
+      const { data } = await YoutubeAPIClient.playlists.list(
+        { part: ["snippet"], id: PLAYLIST_IDS },
+        { fetchImplementation: makeFetch(CACHE_4_DAYS) },
+      );
+
+      return (data.items || []).map((item) => ({
+        id: item.id || "",
+        title: item.snippet?.title || "",
+        description: item.snippet?.description || "",
+        image: item.snippet?.thumbnails?.maxres?.url || "",
+      }));
+    },
+
+    getById: async (playlistId: string): Promise<Course | null> => {
+      const { data } = await YoutubeAPIClient.playlists.list(
+        { part: ["snippet"], id: [playlistId] },
+        { fetchImplementation: makeFetch(CACHE_4_DAYS) },
+      );
+
+      const item = data.items?.[0];
+      if (!item) return null;
+
+      return {
+        id: item.id || "",
+        title: item.snippet?.title || "",
+        description: item.snippet?.description || "",
+        image: item.snippet?.thumbnails?.maxres?.url || "",
+      };
     },
   },
 
+  lessons: {
+    getByPlaylistId: fetchAllPlaylistItems,
+  },
+
   video: {
-    getStatsById: async (videoId: string) => {
+    getStatsById: async (videoId: string): Promise<VideoStats> => {
       const { data } = await YoutubeAPIClient.videos.list(
-        {
-          part: ["statistics"], 
-          id: [videoId],
-        },
-        {
-          fetchImplementation: fetchWithNextConfig({
-            revalidate: 60 * 60 * 24, 
-          }),
-        }
+        { part: ["statistics"], id: [videoId] },
+        { fetchImplementation: makeFetch(CACHE_1_DAY) },
       );
 
       const stats = data.items?.[0]?.statistics;
-      
-      const x = {
-        viewsCount: Number(stats?.viewCount || 0),
-        likesCount: Number(stats?.likeCount || 0),
+
+      return {
+        viewsCount:    Number(stats?.viewCount    || 0),
+        likesCount:    Number(stats?.likeCount    || 0),
         commentsCount: Number(stats?.commentCount || 0),
       };
-      return x;
     },
-    getComments: async (videoId: string) => {
+
+    getComments: async (videoId: string): Promise<Comment[]> => {
       try {
         const { data } = await YoutubeAPIClient.commentThreads.list(
           {
             part: ["snippet", "replies"],
-            videoId: videoId,
+            videoId,
             maxResults: 50,
             order: "relevance",
           },
-          {
-            fetchImplementation: fetchWithNextConfig({
-              revalidate: 60 * 60 * 24,
-            }),
-          }
+          { fetchImplementation: makeFetch(CACHE_1_DAY) },
         );
 
-        const comments = (data.items || []).map((item) => {
-          const commentData = item.snippet?.topLevelComment?.snippet;
-
-          const replies = (item.replies?.comments || []).map((reply) => ({
-            content: reply.snippet?.textDisplay || "",
-            likeCount: Number(reply.snippet?.likeCount || 0),
-            publishDate: reply.snippet?.publishedAt || "",
-            author: {
-              image: reply.snippet?.authorProfileImageUrl || "",
-              userName: reply.snippet?.authorDisplayName || "Usuário Desconhecido",
-            },
-          }));
+        return (data.items || []).map((item) => {
+          const top = item.snippet?.topLevelComment?.snippet;
 
           return {
-            content: commentData?.textDisplay || "",
-            likeCount: Number(commentData?.likeCount || 0),
-            publishDate: commentData?.publishedAt || "",
+            content:     top?.textDisplay    || "",
+            likeCount:   Number(top?.likeCount || 0),
+            publishDate: top?.publishedAt    || "",
             author: {
-              image: commentData?.authorProfileImageUrl || "",
-              userName: commentData?.authorDisplayName || "Usuário Desconhecido",
+              image:    top?.authorProfileImageUrl || "",
+              userName: top?.authorDisplayName     || "Usuário Desconhecido",
             },
-            replies: replies,
+            replies: (item.replies?.comments || []).map((reply) => ({
+              content:     reply.snippet?.textDisplay    || "",
+              likeCount:   Number(reply.snippet?.likeCount || 0),
+              publishDate: reply.snippet?.publishedAt    || "",
+              author: {
+                image:    reply.snippet?.authorProfileImageUrl || "",
+                userName: reply.snippet?.authorDisplayName     || "Usuário Desconhecido",
+              },
+            })),
           };
         });
-
-        return comments;
-      } catch (error) {
+      } catch {
         return [];
       }
     },
   },
-  
-
 };
