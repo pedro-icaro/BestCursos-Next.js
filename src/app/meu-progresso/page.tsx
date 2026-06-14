@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { LocalStorage } from "@/shared/services/local-storage";
-import { MdCheckCircle, MdStar, MdPlayCircle, MdSchool } from "react-icons/md";
+import { MdCheckCircle, MdStar, MdSchool } from "react-icons/md";
 import Link from "next/link";
 import { Continuarcurso } from "@/components/continuarcurso/continuarcurso";
 
