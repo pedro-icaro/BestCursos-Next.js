@@ -12,7 +12,7 @@ const menuPrincipal = [
   { nome: "Cursos", rota: "/cursos", icone: FiBook },
   { nome: "Trilhas", rota: "/trilhas", icone: FiMap },
   { nome: "Favoritos", rota: "/meus-cursos", icone: FiAward },
-  { nome: "Apoio ao projeto", rota: "/apoio-ao-projeto", icone: IoMdTrendingUp },
+  { nome: "Meu progresso", rota: "/meu-progresso", icone: IoMdTrendingUp },
 ];
 
 export default function Navbar() {

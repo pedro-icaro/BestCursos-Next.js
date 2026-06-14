@@ -108,8 +108,8 @@ export const APIYoutube = {
     },
     getRecommended: async (): Promise<Course[]> => {
       const { data } = await YoutubeAPIClient.playlists.list(
-        { part: ["snippet"], id: recomendados},
-        {fetchImplementation: makeFetch(CACHE_4_DAYS)},
+        {part: ["snippet"],id: recomendados},
+        { fetchImplementation: makeFetch(CACHE_4_DAYS)},
       );
 
       return (data.items || []).map((item) => ({
@@ -117,8 +117,8 @@ export const APIYoutube = {
         title: item.snippet?.title || "",
         description: item.snippet?.description || "",
         image: item.snippet?.thumbnails?.maxres?.url || "",
-      }))
-    },
+      }));
+    }
   },
 
   lessons: {

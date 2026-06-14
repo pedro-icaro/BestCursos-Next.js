@@ -1,7 +1,7 @@
 export default function Apoioprojeto(){
     return(
         <>
-            <h1>apoio ao projeto</h1>
+            <h1>Meu progresso</h1>
         </>
     )
 }
