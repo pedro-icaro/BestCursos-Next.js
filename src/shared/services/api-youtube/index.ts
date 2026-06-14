@@ -1,5 +1,6 @@
 import { youtube } from "@googleapis/youtube";
 import { PLAYLIST_IDS } from "./courses-config";
+import { promises } from "dns";
 
 const CACHE_4_DAYS = 60 * 60 * 96;
 const CACHE_1_DAY  = 60 * 60 * 24;
@@ -71,6 +72,8 @@ async function fetchAllPlaylistItems(playlistId: string): Promise<Lesson[]> {
   return lessons;
 }
 
+const recomendados = ["PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA","PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n","PLHz_AreHm4dmSj0MHol_aoNYCSGFqvfXV","PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1"]
+
 export const APIYoutube = {
   course: {
     getAll: async (): Promise<Course[]> => {
@@ -102,6 +105,19 @@ export const APIYoutube = {
         description: item.snippet?.description || "",
         image: item.snippet?.thumbnails?.maxres?.url || "",
       };
+    },
+    getRecommended: async (): Promise<Course[]> => {
+      const { data } = await YoutubeAPIClient.playlists.list(
+        { part: ["snippet"], id: recomendados},
+        {fetchImplementation: makeFetch(CACHE_4_DAYS)},
+      );
+
+      return (data.items || []).map((item) => ({
+        id: item.id || "",
+        title: item.snippet?.title || "",
+        description: item.snippet?.description || "",
+        image: item.snippet?.thumbnails?.maxres?.url || "",
+      }))
     },
   },
 

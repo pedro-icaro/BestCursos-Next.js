@@ -14,6 +14,7 @@ export default function Header() {
   const [busca, setBusca] = useState("");
   const router = useRouter();
   const [nome, setNome] = useState(() => LocalStorage.Usuario.getNome());
+  
   const handleSearch = () => {
     if (busca.trim()) {
       router.push(`/pesquisa?q=${encodeURIComponent(busca.trim())}`);
