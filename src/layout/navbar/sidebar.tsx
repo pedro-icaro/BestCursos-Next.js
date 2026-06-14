@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CgHome } from "react-icons/cg";
 import { FaCode } from "react-icons/fa";
-import { FiBook, FiMap, FiAward, FiSettings } from "react-icons/fi";
+import { FiBook, FiMap, FiAward } from "react-icons/fi";
 import { IoMdTrendingUp } from "react-icons/io";
 
 const menuPrincipal = [
