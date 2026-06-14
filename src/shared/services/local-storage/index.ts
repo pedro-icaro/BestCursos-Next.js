@@ -1,11 +1,9 @@
-
-const LOCAL_STORAGE_KEY = "KEEP_WATCHING"
-const FAVORITES_KEY = "FAVORITE_COURSES"
+const LOCAL_STORAGE_KEY = "KEEP_WATCHING";
+const FAVORITES_KEY = "FAVORITE_COURSES";
 const DONE_CLASSES_KEY = "DONE_CLASSES";
 const USER_NAME_KEY = "USER_NAME";
 
-
-export interface PropsContinuarCurso{
+export interface PropsContinuarCurso {
   classId: string;
   courseId: string;
   className: string;
@@ -18,27 +16,27 @@ export interface PropsFavoritoCurso {
 }
 
 export const LocalStorage = {
-    ContinuarCurso: {
-        get: (): PropsContinuarCurso | null => {
-            try {
-                const result = window.localStorage.getItem(LOCAL_STORAGE_KEY);
-                if (result) {
-                    return JSON.parse(result);
-                }
-                return null;
-            } catch {
-                return null;
-            }
-        },
-        set: (data: PropsContinuarCurso) => {
-            try {
-                window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
-            } catch (error) {
-                return;
-            }
+  ContinuarCurso: {
+    get: (): PropsContinuarCurso | null => {
+      try {
+        const result = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (result) {
+          return JSON.parse(result);
         }
+        return null;
+      } catch {
+        return null;
+      }
     },
-Favoritos: {
+    set: (data: PropsContinuarCurso) => {
+      try {
+        window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+      } catch (error) {
+        return;
+      }
+    },
+  },
+  Favoritos: {
     get: (): PropsFavoritoCurso[] => {
       try {
         if (typeof window === "undefined") return [];
@@ -51,10 +49,12 @@ Favoritos: {
     toggle: (course: PropsFavoritoCurso) => {
       try {
         const favoritos = LocalStorage.Favoritos.get();
-        const jaFavoritado = favoritos.some(f => f.courseId === course.courseId);
+        const jaFavoritado = favoritos.some(
+          (f) => f.courseId === course.courseId,
+        );
 
         const novos = jaFavoritado
-          ? favoritos.filter(f => f.courseId !== course.courseId) // remove
+          ? favoritos.filter((f) => f.courseId !== course.courseId) // remove
           : [...favoritos, course]; // adiciona
 
         window.localStorage.setItem(FAVORITES_KEY, JSON.stringify(novos));
@@ -63,14 +63,16 @@ Favoritos: {
       }
     },
     isFavorite: (courseId: string): boolean => {
-      return LocalStorage.Favoritos.get().some(f => f.courseId === courseId);
-    }
+      return LocalStorage.Favoritos.get().some((f) => f.courseId === courseId);
+    },
   },
-   AulasConcluidas: {
+  AulasConcluidas: {
     get: (courseId: string): string[] => {
       try {
         if (typeof window === "undefined") return [];
-        const result = window.localStorage.getItem(`${DONE_CLASSES_KEY}_${courseId}`);
+        const result = window.localStorage.getItem(
+          `${DONE_CLASSES_KEY}_${courseId}`,
+        );
         return result ? JSON.parse(result) : [];
       } catch {
         return [];
@@ -78,13 +80,30 @@ Favoritos: {
     },
     save: (courseId: string, classIds: string[]) => {
       try {
-        window.localStorage.setItem(`${DONE_CLASSES_KEY}_${courseId}`, JSON.stringify(classIds));
+        window.localStorage.setItem(
+          `${DONE_CLASSES_KEY}_${courseId}`,
+          JSON.stringify(classIds),
+        );
       } catch {
         return;
       }
-    }
+    },
+    getTotalConcluidas: (): number => {
+      try {
+        if (typeof window === "undefined") return 0;
+
+        return Object.keys(window.localStorage)
+          .filter((key) => key.startsWith("DONE_CLASSES_"))
+          .reduce((total, key) => {
+            const aulas = JSON.parse(window.localStorage.getItem(key) || "[]");
+            return total + aulas.length;
+          }, 0);
+      } catch {
+        return 0;
+      }
+    },
   },
-   Usuario: {
+  Usuario: {
     getNome: (): string => {
       try {
         if (typeof window === "undefined") return "";
@@ -99,7 +118,6 @@ Favoritos: {
       } catch {
         return;
       }
-    }
-  }
-    
-}
+    },
+  },
+};
