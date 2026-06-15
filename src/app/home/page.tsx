@@ -13,6 +13,7 @@ export default async function home() {
   return (
     <>
       <div>
+        
         <div className=" flex flex-col gap-2">
           <Continuarcurso />
           <h1 className="font-bold text-3xl p-1">Mais Relevantes</h1>

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { CgHome } from "react-icons/cg";
 import { FaCode } from "react-icons/fa";
 import { FiBook, FiMap, FiAward } from "react-icons/fi";
+import { HiOutlineUserGroup } from "react-icons/hi";
 import { IoMdTrendingUp } from "react-icons/io";
 
 const menuPrincipal = [
@@ -13,6 +14,7 @@ const menuPrincipal = [
   { nome: "Trilhas", rota: "/trilhas", icone: FiMap },
   { nome: "Favoritos", rota: "/meus-cursos", icone: FiAward },
   { nome: "Meu progresso", rota: "/meu-progresso", icone: IoMdTrendingUp },
+  {nome: "Comunidades", rota: "/comunidades", icone: HiOutlineUserGroup  }
 ];
 
 export default function Navbar() {
