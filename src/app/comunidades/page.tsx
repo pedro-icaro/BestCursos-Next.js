@@ -1,37 +1,18 @@
+import { APIDiscord } from "@/shared/services/api-discord";
 import { BsDiscord } from "react-icons/bs";
 
 export default async function PaginaComunidade() {
-  const codigosConvite = [
-    "/programador", 
-    "/programacao",
-    "/uARpDuYH",
-    "/GVN4A9eB"
-  ];
-
-  async function buscarDadosDoDiscord(codigo: string) {
-    try {
-      const response = await fetch(`https://discord.com/api/v9/invites/${codigo}?with_counts=true`, {
-        next: { revalidate: 3600 }
-      });
-      
-      if (!response.ok) return { erro: true, codigoOriginal: codigo };
-      return await response.json();
-    } catch (error) {
-      return { erro: true, codigoOriginal: codigo };
-    }
-  }
-
-  const servidores = await Promise.all(codigosConvite.map(buscarDadosDoDiscord));
+  const servidores = await APIDiscord.servidoresLink.getAll();
 
   return (
     <main className="min-h-screen p-4 md:p-8 flex flex-col items-center">
       <div className="w-full max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
-          {servidores.map((discordData, index) => {     
+          {servidores.map((discordData) => {     
             if (discordData.erro) {
               return (
-                <div key={index} className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl flex flex-col items-center justify-center text-center h-full min-h-[300px]">
+                <div key={discordData.code} className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl flex flex-col items-center justify-center text-center h-full min-h-[300px]">
                   <p className="text-zinc-500 mb-2">Servidor Indisponível</p>
                   <span className="text-xs text-zinc-600">O link de convite pode ter expirado.</span>
                 </div>
