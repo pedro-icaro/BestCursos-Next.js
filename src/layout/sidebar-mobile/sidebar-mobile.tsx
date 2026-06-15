@@ -9,6 +9,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import { LocalStorage } from "@/shared/services/local-storage";
 import { useState } from "react";
+import { HiOutlineUserGroup } from "react-icons/hi";
 
 const menuPrincipal = [
   { nome: "Início", rota: "/home", icone: CgHome },
@@ -16,6 +17,7 @@ const menuPrincipal = [
   { nome: "Trilhas", rota: "/trilhas", icone: FiMap },
   { nome: "Favoritos", rota: "/meus-cursos", icone: FiAward },
   { nome: "Meu progresso", rota: "/meu-progresso", icone: IoMdTrendingUp },
+  {nome: "Comunidades", rota: "/comunidades", icone: HiOutlineUserGroup  }
 ];
 
 export default function SidebarMobile() {
