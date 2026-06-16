@@ -5,6 +5,7 @@ import { LocalStorage } from "@/shared/services/local-storage";
 import { MdCheckCircle, MdStar, MdSchool } from "react-icons/md";
 import Link from "next/link";
 import { Continuarcurso } from "@/components/continuarcurso/continuarcurso";
+import BannerFeedback from "@/components/feedback/feedback";
 
 export default function ProgressoPage() {
   const [nome] = useState(() => LocalStorage.Usuario.getNome());
@@ -22,6 +23,7 @@ export default function ProgressoPage() {
 
   return (
     <div className="flex flex-col gap-6 px-4 py-6 md:px-6 md:py-8 max-w-3xl mx-auto">
+      <BannerFeedback />
       <div className="flex flex-col gap-1">
         <h1 className="font-semibold text-3xl md:text-4xl">
           {nome || "Aluno"}
