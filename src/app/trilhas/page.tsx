@@ -744,10 +744,6 @@ export default function TrilhasRoadmap() {
                     </div>
                   </div>
 
-                  <button className="w-full bg-olive-600 hover:bg-olive-700 text-white py-3 rounded-lg font-bold transition-colors duration-300 flex items-center justify-center gap-2 active:scale-95">
-                    <ArrowRight className="w-5 h-5" />
-                    Iniciar Aprendizado
-                  </button>
                 </div>
               ) : (
                 <div className="bg-olive-50 border-2 border-olive-200 rounded-lg p-6 text-center text-olive-500 sticky top-6">
