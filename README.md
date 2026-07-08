@@ -1,7 +1,7 @@
 <div align="center">
 
-# 🚀 DevPro
-### A curadoria definitiva para desenvolvedores iniciantes
+#  DevPro
+### O guia definitivo para desenvolvedores iniciantes
 
 [![Status do Projeto](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)]()
 [![Tecnologia](https://img.shields.io/badge/Next.js-16.1.6-black)]()
@@ -15,12 +15,12 @@ Curamos os melhores conteúdos de programação e estruturamos do básico ao ava
 
 <br>
 
-## 🎯 Sobre o Projeto
+##  Sobre o Projeto
 Muitos iniciantes desistem por não saber por onde começar ou por se perderem no mar de conteúdos. O **DevPro** resolve isso através de uma interface minimalista, onde o aluno tem um roteiro guiado e o controle total do seu progresso.
 
 ---
 
-## 🛠️ Tecnologias
+##  Tecnologias
 O projeto foi construído com o que há de mais moderno no mercado:
 
 *   **Framework**: Next.js 16 (App Router)
@@ -31,7 +31,7 @@ O projeto foi construído com o que há de mais moderno no mercado:
 
 ---
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
 > **Filtragem de Conteúdo de Alta Performance**
 > Não entregamos apenas uma lista. Realizamos uma curadoria rigorosa, selecionando conteúdos que prezam pela didática clara, projetos práticos e profundidade técnica, garantindo uma base sólida para quem está entrando na área.
@@ -50,7 +50,7 @@ Utilize o nosso **[sistema de feedback integrado](https://dev-pro-psi.vercel.app
 
 ---
 
-## 🚀 Como rodar localmente
+##  Como rodar localmente
 
 ```bash
 # Clone o repositório
